@@ -1,0 +1,16 @@
+*
+
+!compton.conf
+!conky
+!dunst
+!.gitignore
+!gtk*
+!i3
+!.i3*
+!lemon
+!mopidy
+!ranger
+!termite
+!.vimrc
+!.Xresources
+!.zshrc

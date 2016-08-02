@@ -1,0 +1,134 @@
+Xft.dpi: 96
+Xft.antialias: true 
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+
+URxvt.scrollBar: false
+URxvt*transparent: false
+URxvt*shading: 20
+URxvt*blurRadius: 20
+URxvt*fading: 20
+URxvt*internalBorder: 0
+URxvt*saveLines: 1000
+
+URxvt.keysym.M-C-c:	perl:clipboard:copy
+URxvt.keysym.M-C-v:	perl:clipboard:paste
+
+!URxvt.font: -*-tewi-medium-*-*-*-11-150-*-*-*-*-*-*
+URxvt.font: -*-tewi-medium-*-*-*-11-150-*-*-*-*-*-*,\
+			-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+URxvt*letterSpace: 0 
+
+! special
+*foreground:   #eceff1
+*background:   #263238
+*cursorColor:  #eceff1
+
+! black
+*color0:       #263238
+*color8:       #37474f
+
+! red
+*color1:       #ff9800
+*color9:       #ffa74d
+
+! green
+*color2:       #8bc34a
+*color10:      #9ccc65
+
+! yellow
+*color3:       #ffc107
+*color11:      #ffa000
+
+! blue
+*color4:       #03a9f4
+*color12:      #81d4fa
+
+! magenta
+*color5:       #EF4981
+*color13:      #ad1457
+
+! cyan
+*color6:       #009688
+*color14:      #26a69a
+
+! white
+*color7:       #cfd8dc
+*color15:      #eceff1
+
+
+!URxvt*borderColor:	#151515
+URxvt*borderColor: #77c3a9
+URxvt*colorBD:		#ffffff
+
+!!!!!!
+! ! special
+! *.foreground:   #e8dfd6
+! !*.background:   #021b21
+! *.background:	#0c1115
+! *.cursorColor:  #e8dfd6
+! 
+! ! black
+! *color0:       #032c36
+! *color8:       #065f73
+! 
+! ! red
+! *color1:       #c2454e
+! *color9:       #ef5847
+! 
+! ! green
+! *color2:       #7cbf9e
+! *color10:      #a2d9b1
+! 
+! ! yellow
+! *color3:       #8a7a63
+! *color11:      #beb090
+! 
+! ! blue
+! *color4:       #2e3340
+! *color12:      #61778d
+! 
+! ! magenta
+! *color5:       #ff5879
+! *color13:      #ff99a1
+! 
+! ! cyan
+! *color6:       #44b5b1
+! *color14:      #9ed9d8
+! 
+! ! white
+! *color7:       #f2f1b9
+! *color15:      #f6f6c9
+
+! rofi.terminal:	urxvt
+! rofi.lines:		5
+! rofi.eh:		1
+rofi.width:		50
+rofi.padding:	100
+rofi.fullscreen: true
+rofi.fixed-num-lines: true
+! rofi.opacity:	65
+rofi.bw:		0
+rofi.location:	0
+!rofi.yoffset:	-20
+! rofi.font:		SFNS Ultralight 28
+rofi.terminal:	urxvt
+rofi.lines:		10
+rofi.eh:		1
+rofi.font:		Channel 4 Horseferry 36
+rofi.color-window: argb:aa263238, argb:aa263238, #26a69a
+rofi.color-normal: argb:0263238, #eceff1, argb:0263238, #f4246b, #eceff1
+rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
+rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
+!rofi.color-enabled: true
+!rofi.color-window: #2b303b, #00c3ff, #00c3ff
+!rofi.color-normal: #2b303b, #00c3ff, #2b303b, #00c3ff, #2b303b
+!rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
+!rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
+
+xterm*locale: true
+xterm*faceName: Monaco for Powerline:size=9:antialias=true
