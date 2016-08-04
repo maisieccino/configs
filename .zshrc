@@ -1,3 +1,35 @@
+export GTK2_RC_FILES=/etc/gtk-2.0/gtkrc:/home/mbell/.gtkrc-2.0
+alias rec='ffmpeg -f x11grab -s 1920x1080 -an -i :0.0 -c:v libvpx -b:v 5M -crf 10 -quality realtime -y'
+alias recaud='ffmpeg -f x11grab -s 1920x1080 -i :0.0 -c:v libvpx -b:v 5M -crf 10 -quality realtime -y'
+
+alias update='gem update && sudo pacman -Syu && yaourt -Syua'
+
+alias shit='sudo $(fc -nl -1)'
+function fuck() {
+  if [ ! $1 ]; then
+    echo "Usage: fuck you process_name"
+    exit
+  fi
+
+  if killall $2; then
+    echo
+    echo " (╯°□°）╯︵$(echo $2 | flip)"
+    echo
+  fi
+}
+alias ksp='LC_ALL=C $HOME/.steam/steam/steamapps/common/Kerbal\ Space\ Program/KSP.x86_64'
+
+function so() {
+  xdg-open "https://stackoverflow.com/search?q=$1"
+}
+
+alias open='xdg-open'
+
+alias minecraft='java -jar ~/.minecraft/Minecraft.jar'
+alias git=hub
+
+export GOPATH=$HOME/go
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -23,15 +55,11 @@ git-wholazy() {
     git log --author="$1" --pretty=tformat: --numstat | awk '{ s += $1; t += $2 } END { print s " added, "t " removed" }'
 }
 
-# update from repos.
-alias update='sudo pacman -Syyu && notify-send pacman "Update completed."'
-alias aurupdate='pacaur -Syua && notify-send pacaur "Updates completed."'
-
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 # Path to your oh-my-zsh installation.
-ZSH=/usr/share/oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -47,7 +75,7 @@ ZSH_THEME="gitster"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
+# DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -81,13 +109,14 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(archlinux, bower, emoji, git)
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/bin/propside/propside:$PATH:$HOME/.gem/ruby/2.3.0/bin:$HOME/.cabal/bin:/opt/parallax/bin:/opt/greenfoot
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.3.0/bin:$HOME/scripts:~/go/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
+source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -103,19 +132,7 @@ fi
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-#export SSH_KEY_PATH="~/.ssh/dsa_id"
-#if ! pgrep -u $USER ssh-agent > /dev/null; then
-#        ssh-agent > ~/.ssh-agent-thing
-#    fi
-#    if [[ "$SSH_AGENT_PID" == "" ]]; then
-#            eval $(<~/.ssh-agent-thing)
-#        fi
-#        ssh-add -l >/dev/null || alias ssh='ssh-add -l >/dev/null || ssh-add && unalias ssh; ssh'
-
-unset SSH_AGENT_PID
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-fi
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -126,21 +143,51 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
-if [[ ! -d $ZSH_CACHE_DIR ]]; then
-  mkdir $ZSH_CACHE_DIR
-fi
-
-source $ZSH/oh-my-zsh.sh
+source $HOME/.profile
 
 export GTK2_RC_FILES="/etc/gtk-2.0/gtkrc:$HOME/.gtkrc-2.0"
+#Colors
+export COLOR_BG=$( cat ~/.Xresources | awk '/background/ { printf "%s\n", $2 }' )
+export COLOR_FG=$( cat ~/.Xresources | awk '/foreground/ { printf "%s\n", $2 }' )
+export COLOR_0=$( cat ~/.Xresources | awk '/color0/ { printf "%s\n", $2 }' )
+export COLOR_1=$( cat ~/.Xresources | awk '/color1/ { printf "%s\n", $2 }' )
+export COLOR_2=$( cat ~/.Xresources | awk '/color2/ { printf "%s\n", $2 }' )
+export COLOR_3=$( cat ~/.Xresources | awk '/color3/ { printf "%s\n", $2 }' )
+export COLOR_4=$( cat ~/.Xresources | awk '/color4/ { printf "%s\n", $2 }' )
+export COLOR_5=$( cat ~/.Xresources | awk '/color5/ { printf "%s\n", $2 }' )
+export COLOR_6=$( cat ~/.Xresources | awk '/color6/ { printf "%s\n", $2 }' )
+export COLOR_7=$( cat ~/.Xresources | awk '/color7/ { printf "%s\n", $2 }' )
+export COLOR_8=$( cat ~/.Xresources | awk '/color8/ { printf "%s\n", $2 }' )
+export COLOR_9=$( cat ~/.Xresources | awk '/color9/ { printf "%s\n", $2 }' )
+export COLOR_10=$( cat ~/.Xresources | awk '/color10/ { printf "%s\n", $2 }' )
+export COLOR_11=$( cat ~/.Xresources | awk '/color11/ { printf "%s\n", $2 }' )
+export COLOR_12=$( cat ~/.Xresources | awk '/color12/ { printf "%s\n", $2 }' )
+export COLOR_13=$( cat ~/.Xresources | awk '/color13/ { printf "%s\n", $2 }' )
+export COLOR_14=$( cat ~/.Xresources | awk '/color14/ { printf "%s\n", $2 }' )
+export COLOR_15=$( cat ~/.Xresources | awk '/color15/ { printf "%s\n", $2 }' )
 
-export GOPATH=~/go
-export PATH=$PATH:~/go/bin
+eval $(dircolors ~/.dircolors)
 
+export ANDROID_HOME=/opt/androidsdk
+
+# Start the gpg-agent if not already running
+if ! pgrep -x -u "${USER}" gpg-agent >/dev/null 2>&1; then
+  gpg-connect-agent /bye >/dev/null 2>&1
+fi
+
+# Set SSH to use gpg-agent
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+fi
+
+# Set GPG TTY
+GPG_TTY=$(tty)
+export GPG_TTY
 eval "$(hub alias -s)"
 
-source $HOME/.profile
+# Refresh gpg-agent tty in case user switches into an X session
+gpg-connect-agent updatestartuptty /bye >/dev/null
 
 export NVM_DIR="/home/mbell/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -149,3 +196,5 @@ echo "UPDATESTARTUPTTY" | gpg-connect-agent > /dev/null 2&>1
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias dttmomsea="echo 'dont zsh me or my son ever again'"
 alias timestamp="date +%Y%m%d%H%M%S"
+
+source ~/.secrets

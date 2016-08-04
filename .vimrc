@@ -116,11 +116,11 @@ let mapleader = "-"
 let g:vim_arduino_serial_port = "/dev/ttyACM0"
 
 "SPLITS!
-nmap <C-J> <C-W>j
-nmap <C-K> <C-W>k
+map <C-J> <C-W>j
+map <C-K> <C-W>k
 
-nmap <C-H> <C-W>h
-nmap <C-L> <C-W>l
+map <C-H> <C-W>h
+map <C-L> <C-W>l
 
 set splitbelow
 set splitright
@@ -132,8 +132,6 @@ set shiftwidth=4
 
 set laststatus=2
 set noshowmode
-
-set autoread
 
 "set cursorline
 hi CursorLine cterm=NONE ctermbg=16 guibg=darkgray
@@ -150,6 +148,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-pathogen'
+Plug 'tpope/vim-sleuth'
 
 " UI
 Plug 'mhinz/vim-Startify'
@@ -178,10 +177,7 @@ Plug 'sophacles/vim-processing'
 " JS
 Plug 'maksimr/vim-jsbeautify'
 
-" JAVA
-Plug 'artur-shaik/vim-javacomplete2'
-
-" mustache/hb
+" Handlebars/mustache
 Plug 'mustache/vim-mustache-handlebars'
 
 " LaTeX
@@ -193,6 +189,13 @@ Plug 'kchmck/vim-coffee-script'
 call plug#end()
 
 execute pathogen#infect()
+
+" NERD Tree
+nmap <leader>e :NERDTreeToggle<CR>
+let g:NERDTreeMouseMode = 1
+let g:nerdtree_tabs_open_on_console_startup = 0
+nmap <leader>E :NERDTreeTabsToggle<CR>
+
 
 nmap <F8> :TagbarToggle<CR>
 au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
@@ -207,53 +210,16 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let delimitMate_expand_cr = 1
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" delimitMate
-let delimitMate_expand_cr = 1
-
-" nerdtree
-nmap <leader>e :NERDTreeToggle<CR>
-nmap <leader>E :NERDTreeTabsToggle<CR>
-let g:nerdtree_tabs_open_on_console_startup = 0
-
-" NEOOCOMPLETE
-let g:neocomplete#enable_at_startup = 1
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
-" java
-imap <F4> <Plug>(JavaComplete-Imports-Add)
-nmap <F4> <Plug>(JavaComplete-Imports-Add)
-imap <C-x>     <Plug>(neosnippet_expand_or_jump)
-smap <C-x>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-x>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB>
- \ pumvisible() ? "\<C-n>" :
- \ neosnippet#expandable_or_jumpable() ?
- \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-  endif
-
-
-" Limelight
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_guifg = 'DarkGray'
-nmap <F2> :Goyo<CR>
+let g:limelight_conceal_ctermfg = 'Gray'
+let g:limelight_conceal_guifg = '#D47F35'
+nmap <f2> :Goyo<CR>
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
@@ -282,7 +248,7 @@ let g:tagbar_type_tex = {
     \ 'sort'    : 0,
 \ }
 
-" vertical lines
+" vertical line indentation
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#09AA08'
 let g:indentLine_char = '│'
