@@ -197,4 +197,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 alias dttmomsea="echo 'dont zsh me or my son ever again'"
 alias timestamp="date +%Y%m%d%H%M%S"
 
+function countwords() {
+    pdftotext $1 - | wc -w
+}
+
 source ~/.secrets
