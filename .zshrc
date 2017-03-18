@@ -113,7 +113,7 @@ plugins=(archlinux, bower, emoji, git)
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.3.0/bin:$HOME/scripts:~/go/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.4.0/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/scripts:~/go/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -202,3 +202,10 @@ function countwords() {
 }
 
 source ~/.secrets
+source /usr/bin/virtualenvwrapper.sh
+export WORKON_HOME=~/.virtualenvs
+export AURDEST=/build/mbell
+
+# added by travis gem
+[ -f /home/mbell/.travis/travis.sh ] && source /home/mbell/.travis/travis.sh
+alias django="python manage.py"

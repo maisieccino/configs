@@ -133,10 +133,17 @@ set shiftwidth=4
 set laststatus=2
 set noshowmode
 
+" Omnicompletion
+set omnifunc=syntaxcomplete#Complete
+
 "set cursorline
-hi CursorLine cterm=NONE ctermbg=16 guibg=darkgray
-hi CursorColumn cterm=NONE ctermbg=16 guibg=darkgray
+function! s:set_cursor_line()
+  hi CursorLine cterm=NONE ctermbg=16 guibg=darkgray term=none
+  hi CursorColumn cterm=NONE ctermbg=16 guibg=darkgray
+endfunction
+
 set cursorline! cursorcolumn!
+call s:set_cursor_line()
 
 filetype plugin indent on
 set grepprg=grep\ -nH\ $*
@@ -145,22 +152,30 @@ let g:tex_flavor = "xelatex"
 call plug#begin('~/.vim/plugged')
 
 " GENERAL
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-pathogen'
 Plug 'tpope/vim-sleuth'
 
-" UI
-Plug 'mhinz/vim-Startify'
+"Plug 'mhinz/vim-Startify' <-- May be reenabled in the future.
+
+" ctags
 Plug 'majutsushi/tagbar'
+
 Plug 'terryma/vim-multiple-cursors'
-Plug 'chrisbra/unicode.vim'
+
+" A E S T H E T I C S
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'bling/vim-airline'
+
 Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
+
+" airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" misc utisl
 Plug 'Rykka/colorv.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'Raimondi/delimitMate'
@@ -174,11 +189,13 @@ Plug 'scrooloose/syntastic'
 Plug 'sophacles/vim-processing'
 "Plug 'justinmk/vim-syntax-extra'
 
-" JS
-Plug 'maksimr/vim-jsbeautify'
-
 " Handlebars/mustache
 Plug 'mustache/vim-mustache-handlebars'
+
+" JS
+Plug 'ternjs/tern_for_vim'
+let g:tern_show_argument_hints='on_hold'
+let g:tern_map_keys=1
 
 " LaTeX
 Plug 'vim-latex/vim-latex'
@@ -204,18 +221,23 @@ au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 "AIRLINE
 let g:airline_powerline_fonts = 1
 let g:airline_theme='term'
+let g:airline#extensions#tabline#enabled = 1
 
 "SYNTASTIC
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let delimitMate_expand_cr = 1
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1
+let g:delimitMate_jump_expansion = 1
+let g:delimitMate_balance_matchpairs = 1
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
 
 let g:limelight_conceal_ctermfg = 'Gray'
 let g:limelight_conceal_guifg = '#D47F35'
@@ -223,6 +245,78 @@ nmap <f2> :Goyo<CR>
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+autocmd! ColorScheme * call s:set_cursor_line()
+
+" neocomplete
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+" imap <expr><BS> neocomplete#smart_close_popup()."\<C-h>" \| <Plug>delimitMateBS
+inoremap <expr> <BS>  pumvisible() ? neocomplete#smart_close_popup()."\<BS>" : delimitMate#BS()
+" Close popup by <Space>.
+" inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType markdown NeoCompleteLock
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=tern#Complete
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+
+let g:neocomplete#sources#omni#input_patterns.javascript =
+      \ '\h\w*\|[^. \t]\.\w*'
 
 " (Xe)?(La)?TeX word count
 :map <F3> :w !detex \| wc -w<CR>
@@ -252,14 +346,3 @@ let g:tagbar_type_tex = {
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#09AA08'
 let g:indentLine_char = '│'
-
-" JS Beautify
-autocmd FileType javascript noremap <buffer>  <Leader>j :call JsBeautify()<cr>
-" for json
-autocmd FileType json noremap <buffer> <Leader>j :call JsonBeautify()<cr>
-" for jsx
-autocmd FileType jsx noremap <buffer> <Leader>j :call JsxBeautify()<cr>
-" for html
-autocmd FileType html noremap <buffer> <Leader>j :call HtmlBeautify()<cr>
-" for css or scss
-autocmd FileType css noremap <buffer> <Leader>j :call CSSBeautify()<cr>
