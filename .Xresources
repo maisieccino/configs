@@ -19,7 +19,7 @@ URxvt*buffered:	false
 URxvt.keysym.M-C-c:	perl:clipboard:copy
 URxvt.keysym.M-C-v:	perl:clipboard:paste
 
-URxvt.font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-*-*
+URxvt.font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-*-*,-wuncon-siji-medium-r-normal--11-100-*-*-*-*-*-*
 
 URxvt*letterSpace:  0
 
