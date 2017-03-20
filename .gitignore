@@ -12,3 +12,6 @@
 !ranger
 !termite
 !.Xresources
+!.zshrc
+!polybar/
+!polybar/*

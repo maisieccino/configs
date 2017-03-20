@@ -19,8 +19,7 @@ URxvt*buffered:	false
 URxvt.keysym.M-C-c:	perl:clipboard:copy
 URxvt.keysym.M-C-v:	perl:clipboard:paste
 
-URxvt.font: -*-tamzenforpowerline-medium-*-*-*-12-*-*-*-*-*-*-*,\
-			-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+URxvt.font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-*-*
 
 URxvt*letterSpace:  0
 
@@ -62,31 +61,36 @@ URxvt*letterSpace:  0
 *color7:       #cfd8dc
 *color15:      #eceff1
 
-! rofi.terminal:	urxvt
-! rofi.lines:		5
-! rofi.eh:		1
-rofi.width:		50
-rofi.padding:	100
-rofi.fullscreen: true
-rofi.fixed-num-lines: true
+!rofi.width:		50
+!rofi.padding:	100
+!rofi.fullscreen: true
+!rofi.fixed-num-lines: true
 ! rofi.opacity:	65
-rofi.bw:		0
-rofi.location:	0
-!rofi.yoffset:	-20
-! rofi.font:		SFNS Ultralight 28
-rofi.terminal:	urxvt
-rofi.lines:		10
-rofi.eh:		1
-rofi.font:		Channel 4 Horseferry 36
-rofi.color-window: argb:aa263238, argb:aa263238, #26a69a
-rofi.color-normal: argb:0263238, #eceff1, argb:0263238, #f4246b, #eceff1
-rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
-rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
-!rofi.color-enabled: true
-!rofi.color-window: #2b303b, #00c3ff, #00c3ff
-!rofi.color-normal: #2b303b, #00c3ff, #2b303b, #00c3ff, #2b303b
+!rofi.bw:		0
+!rofi.location:	0
+!!rofi.yoffset:	-20
+!rofi.terminal:	urxvt
+!rofi.lines:		10
+!rofi.eh:		1
+!rofi.font:		Channel 4 Horseferry 36
+!rofi.color-window: argb:aa263238, argb:aa263238, #26a69a
+!rofi.color-normal: argb:0263238, #eceff1, argb:0263238, #f4246b, #eceff1
 !rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
 !rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
+
+rofi.color-enabled: true
+rofi.color-window: argb:be263238, #03a9f4, #03a9f4
+rofi.color-normal: argb:0fdf6e3, #81d4fa, argb:0eee8d5, #03a9f4, #eceff1
+rofi.color-active: argb:0fdf6e3, #ffc107, argb:0eee8d5, #ffc107, #263238
+rofi.color-urgent: argb:0fdf6e3, #ef4981, argb:0eee8d5, #ef4981, #eceff1
+rofi.fullscreen: false
+rofi.width: 300
+rofi.padding: 10
+rofi.font: Gohu GohuFont 9
+rofi.location: 1
+rofi.yoffset: 24
+rofi.fixed-visible-lines: false
+rofi.sidebar-mode: true
 
 xterm*locale: true
 xterm*faceName: Monaco for Powerline:size=9:antialias=true
