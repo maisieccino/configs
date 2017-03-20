@@ -109,7 +109,6 @@ bindsym $mod+y fullscreen disable; floating enable; resize set 320 180; sticky e
 
 # Menu
 bindsym $mod+d exec rofi -show run
-#bindsym $mod+d exec dmenu_run
 
 # change focus
 bindsym $mod+j focus left
@@ -162,11 +161,11 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1: main
-bindsym $mod+2 workspace 2: web
-bindsym $mod+3 workspace 3: edit
-bindsym $mod+4 workspace 4: term
-bindsym $mod+5 workspace 5: music
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
@@ -174,11 +173,11 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1: main
-bindsym $mod+Shift+2 move container to workspace 2: web
-bindsym $mod+Shift+3 move container to workspace 3: edit
-bindsym $mod+Shift+4 move container to workspace 4: term
-bindsym $mod+Shift+5 move container to workspace 5: music
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
@@ -256,21 +255,6 @@ exec dunst
 #AUTOMATIC MOUNTING
 exec --no-startup-id devmon --sync --exec-on-drive "notify-send 'Automount' '%l is now mounted at %d.'" --exec-on-remove "notify-send 'Automount' '%l has been removed.'"
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id lock, mode "default"
-        bindsym e exec --no-startup-id i3-msg exit, mode "default"
-        bindsym s exec --no-startup-id lock && systemctl suspend, mode "default"
-        bindsym h exec --no-startup-id lock && systemctl hibernate, mode "default"
-        bindsym r exec --no-startup-id systemctl reboot, mode "default"
-        bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
-
-# back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-#bindsym $mod+q mode "$mode_system"
-
 #Backlight
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight + 10
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight - 10
@@ -278,9 +262,9 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight - 10
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ false && pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ false && pactl set-sink-volume @DEFAULT_SINK@ +2%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioPlay exec --no-startup-id mpc toggle
-bindsym XF86AudioNext exec --no-startup-id mpc next
-bindsym XF86AudioPrev exec --no-startup-id mpc prev
+bindsym $mod+p exec --no-startup-id playerctl play-pause
+bindsym $mod+Shift+comma exec --no-startup-id playerctl previous
+bindsym $mod+Shift+period exec --no-startup-id playerctl next
 
 bindsym $mod+q exec --no-startup-id ~/scripts/power
 
@@ -289,5 +273,6 @@ exec xflux -l 51.5333408
 
 #screenshots
 bindsym Print exec --no-startup-id scrot '/home/mbell/Documents/scrots/auto/%Y-%m-%d_%H%M%S_scrot.png' -e 'notify-send "scrot" "Screenshot saved as $n"'
+bindsym $mod+Print exec --no-startup-id ~/scripts/scrotsel
 
 exec notify-send -a i3 "loaded" "Welcome to i3."

@@ -113,7 +113,7 @@ plugins=(archlinux, bower, emoji, git)
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.4.0/bin:$HOME/.gem/ruby/2.3.0/bin:$HOME/scripts:~/go/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.4.0/bin:$HOME/scripts:~/go/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -208,4 +208,6 @@ export AURDEST=/build/mbell
 
 # added by travis gem
 [ -f /home/mbell/.travis/travis.sh ] && source /home/mbell/.travis/travis.sh
+
+alias musicfile='while sleep 5; do echo "Now playing: $(playerctl metadata artist) - $(playerctl metadata title)" 2&>/dev/null > /tmp/music ; done'
 alias django="python manage.py"

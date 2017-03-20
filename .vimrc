@@ -170,7 +170,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -193,15 +193,28 @@ Plug 'sophacles/vim-processing'
 Plug 'mustache/vim-mustache-handlebars'
 
 " JS
+Plug 'pangloss/vim-javascript'
 Plug 'ternjs/tern_for_vim'
 let g:tern_show_argument_hints='on_hold'
 let g:tern_map_keys=1
 
+" JSON
+au FileType json let g:indentLine_conceallevel = 0
+
 " LaTeX
 Plug 'vim-latex/vim-latex'
 
+" Python
+Plug 'davidhalter/jedi-vim', {'do': 'git submodule update --init'}
+au FileType python set shiftwidth=4
+au FileType python set softtabstop=4
+
 " Coffee
 Plug 'kchmck/vim-coffee-script'
+
+" Typescript
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 
 call plug#end()
 
@@ -307,7 +320,10 @@ autocmd FileType markdown NeoCompleteLock
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=tern#Complete
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+autocmd FileType typescript set omnifunc=tsuquyomi#complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
@@ -315,6 +331,8 @@ if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
 
+let g:neocomplete#sources#omni#input_patterns.python =
+      \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 let g:neocomplete#sources#omni#input_patterns.javascript =
       \ '\h\w*\|[^. \t]\.\w*'
 
