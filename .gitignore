@@ -9,6 +9,8 @@
 !.i3*
 !lemon
 !mopidy
+!polybar
+!polybar/*
 !ranger
 !termite
 !.Xresources

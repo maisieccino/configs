@@ -1,0 +1,195 @@
+;==================================================;
+;						   ;
+;   To learn more about how to configure Polybar   ;
+;   go to https://github.com/jaagr/polybar	   ;
+;						   ;
+;   The README contains alot of information	   ;
+;						   ;
+;==================================================;
+
+[settings]
+
+[global/wm]
+margin-bottom = 0
+
+[bar/lbar]
+monitor = DVI-D-0
+bottom = false
+wm-restack = i3
+width = 100%
+height = 24
+modules-left = i3 music
+modules-center = Xwindow
+modules-right = pavolume Clock Shutdown
+module-margin-right = 1
+background = #77000000
+foreground = #ffffff
+tray-detached = true
+tray-position = 
+tray-maxsize = 24
+border-size = 0
+font-0 = SpaceMono Nerd Font:size=10;0
+font-1 = FontAwesome:size=10;0
+
+[bar/rbar]
+monitor = HDMI-0
+bottom = false
+wm-restack = i3
+width = 100%
+height = 24
+modules-left = i3 music
+modules-center = Xwindow
+modules-right = pavolume Clock Shutdown
+module-margin-right = 1
+background = #77000000
+foreground = #ffffff
+tray-detached = true
+tray-position = 
+tray-maxsize = 24
+border-size = 0
+font-0 = SpaceMono Nerd Font:size=10;0
+font-1 = FontAwesome:size=10;0
+
+[module/i3]
+type = internal/i3
+; label-focused = 
+label-focused-padding = 2
+label-focused-background = #EF4981
+; label-unfocused = 
+label-unfocused-padding = 2
+label-unfocused-foreground = #9dffffff
+; label-urgent = 
+label-urgent-padding = 2
+label-urgent-background = #ffc107
+label-urgent-foreground = #263238
+; label-visible = 
+label-visible-padding = 2
+label-visible-foreground = #ffffff
+pin-workspaces = true
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+
+[module/Battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+poll-interval = 5
+time-format = (%H:%M)
+format-discharging = <ramp-capacity> <label-discharging>
+format-charging = <ramp-capacity> <label-charging>
+label-charging = %time%
+label-discharging = %time%
+label-full = 
+ramp-capacity-0 = !
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+[module/Spotify]
+type = custom/script
+exec = ~/.config/polybar/scripts/spotify.sh
+ellipsis = true
+interval = 5
+maxlen = 40
+click-left = xdotool key super+z
+click-right = xdotool key super+0
+scroll-up = xdotool key super+0
+scroll-down = xdotool key super+z
+format-padding = 1
+
+[module/Xwindow]
+type = internal/xwindow
+label-maxlen = 60
+
+[module/music]
+type = custom/script
+exec = ~/scripts/nowplaying.sh
+ellipsis = true
+interval = 5
+maxlen = 40
+click-left = xdotool key super+p
+click-right = xdotool key super+shift+period
+scroll-up = xdotool key super+0
+scroll-down = xdotool key super+z
+format-padding = 1
+
+[module/Player]
+type = custom/script
+exec = ~/.config/polybar/scripts/player.sh 2>/dev/null
+ellipsis = true
+interval = 5
+maxlen = 40
+click-left = xdotool key super+z
+click-right = xdotool key super+0
+scroll-up = xdotool key super+0
+scroll-down = xdotool key super+z
+format-padding = 1
+
+[module/Wifi]
+type = internal/network
+interface = wlp1s0
+interval = 3
+format-connected = <ramp-signal> <label-connected>
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-5 = 
+format-connected-padding = 2
+label-connected = %essid%
+label-disconnected = 
+format-disconnected-foreground = #4dffffff
+format-disconnected-padding = 2
+
+[module/Ethernet]
+type = internal/network
+interface = enp3s0
+
+[module/Volume]
+type = internal/volume
+mapping = true
+format-volume = <ramp-volume>
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+format-volume-padding = 1
+label-muted = 
+format-muted-foreground = #4dffffff
+format-muted-padding = 1
+
+[module/pavolume]
+type = custom/script
+interval = 2
+label = %output%
+exec = ~/.config/polybar/pavolume.sh
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/pavolume.sh --togmute
+scroll-up = ~/.config/polybar/pavolume.sh --up
+scroll-down = ~/.config/polybar/pavolume.sh --down
+
+[module/Search]
+type = custom/script
+exec = echo " "
+click-left = ~/.config/polybar/scripts/search.sh
+format-padding = 1
+
+[module/Clock]
+type = internal/date
+date = %a, %d %b %H:%M
+interval = 5
+format-padding = 2
+
+[module/Shutdown]
+type = custom/script
+exec = echo ""
+click-left = ~/scripts/power
+format-padding = 1

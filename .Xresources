@@ -65,28 +65,26 @@ URxvt*letterSpace:  0
 ! rofi.terminal:	urxvt
 ! rofi.lines:		5
 ! rofi.eh:		1
-rofi.width:		50
-rofi.padding:	100
-rofi.fullscreen: true
-rofi.fixed-num-lines: true
+rofi.width:		15
+rofi.line-padding: 0
+rofi.padding:	5
+rofi.fullscreen: false
+rofi.fixed-num-lines: false
 ! rofi.opacity:	65
-rofi.bw:		0
-rofi.location:	0
-!rofi.yoffset:	-20
-! rofi.font:		SFNS Ultralight 28
-rofi.terminal:	urxvt
+rofi.bw:		2
+rofi.location:	1
+rofi.yoffset:	24
+rofi.terminal:	termite
 rofi.lines:		10
 rofi.eh:		1
-rofi.font:		Channel 4 Horseferry 36
-rofi.color-window: argb:aa263238, argb:aa263238, #26a69a
+rofi.font:		SpaceMono Nerd Font 10
+rofi.color-window: argb:aa263238, argb:ff00c3ff, #26a69a
 rofi.color-normal: argb:0263238, #eceff1, argb:0263238, #f4246b, #eceff1
 rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
 rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
-!rofi.color-enabled: true
-!rofi.color-window: #2b303b, #00c3ff, #00c3ff
-!rofi.color-normal: #2b303b, #00c3ff, #2b303b, #00c3ff, #2b303b
-!rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
-!rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
+rofi.sidebar-mode: true
+rofi.matching: regex
+rofi.modi: window,run,calc:qalc +u8 -nocurrencies
 
 xterm*locale: true
 xterm*faceName: Monaco for Powerline:size=9:antialias=true
