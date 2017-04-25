@@ -20,16 +20,21 @@ width = 100%
 height = 24
 modules-left = i3 music
 modules-center = Xwindow
-modules-right = pavolume Clock Shutdown
+modules-right = volrocker Clock Shutdown
 module-margin-right = 1
 background = #77000000
 foreground = #ffffff
-tray-detached = true
-tray-position = 
-tray-maxsize = 24
+tray-position = right
+tray-padding = 2
+tray-transparent = true
+tray-maxsize = 10
+tray-offset-y = -2
 border-size = 0
 font-0 = SpaceMono Nerd Font:size=10;0
 font-1 = FontAwesome:size=10;0
+font-2 = DejaVu Sans Mono:size=10;0
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
 [bar/rbar]
 monitor = HDMI-0
@@ -39,16 +44,18 @@ width = 100%
 height = 24
 modules-left = i3 music
 modules-center = Xwindow
-modules-right = pavolume Clock Shutdown
+modules-right = volrocker Clock Shutdown
 module-margin-right = 1
 background = #77000000
 foreground = #ffffff
-tray-detached = true
-tray-position = 
-tray-maxsize = 24
+; tray-position = right
+; tray-padding = 2
 border-size = 0
 font-0 = SpaceMono Nerd Font:size=10;0
 font-1 = FontAwesome:size=10;0
+font-2 = DejaVu Sans Mono:size=10;0
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
 [module/i3]
 type = internal/i3
@@ -175,6 +182,13 @@ click-right = exec pavucontrol
 click-left = ~/.config/polybar/pavolume.sh --togmute
 scroll-up = ~/.config/polybar/pavolume.sh --up
 scroll-down = ~/.config/polybar/pavolume.sh --down
+
+[module/volrocker]
+type = custom/script
+interval = 0.2
+exec = ~/scripts/volume
+;type = custom/text
+;content = %{F#FFFFFF}━━━━━━━━━━━━%{F-}%{F#67727E}━━%{F-}
 
 [module/Search]
 type = custom/script
