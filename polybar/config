@@ -18,7 +18,7 @@ height = 24
 padding-left = 3
 padding-right = 1
 module-margin-right = 2
-modules-left = i3 gpmdp
+modules-left = i3 music 
 modules-center = Xwindow
 modules-right = Wifi Battery Clock Shutdown
 background = #77000000
@@ -28,7 +28,7 @@ tray-position =
 tray-offset-x = -310
 tray-maxsize = 12
 tray-padding = 22
-font-0 = Gohu GohuFont:size=9:style=Bold;0
+font-0 = misc gohup:size=9:style=Bold;0
 font-1 = Wuncon Siji:size=9;0
 
 [module/i3]
@@ -84,14 +84,14 @@ format-padding = 1
 type = internal/xwindow
 label-maxlen = 40
 
-[module/gpmdp]
+[module/music]
 type = custom/script
-exec = ~/.config/polybar/scripts/gpmdp.sh
+exec = ~/scripts/nowplaying.sh
 ellipsis = true
 interval = 5
 maxlen = 40
-click-left = xdotool key super+z
-click-right = xdotool key super+0
+click-left = xdotool key super+p
+click-right = xdotool key super+shift+period
 scroll-up = xdotool key super+0
 scroll-down = xdotool key super+z
 format-padding = 1

@@ -19,7 +19,7 @@ URxvt*buffered:	false
 URxvt.keysym.M-C-c:	perl:clipboard:copy
 URxvt.keysym.M-C-v:	perl:clipboard:paste
 
-URxvt.font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-*-*,-wuncon-siji-medium-r-normal--11-100-*-*-*-*-*-*
+URxvt.font: -*-gohup-medium-*-*-*-11-*-*-*-*-*-iso10646-*,-wuncon-siji-medium-r-normal--11-100-*-*-*-*-iso10646-*
 
 URxvt*letterSpace:  0
 
@@ -86,7 +86,7 @@ rofi.color-urgent: argb:0fdf6e3, #ef4981, argb:0eee8d5, #ef4981, #eceff1
 rofi.fullscreen: false
 rofi.width: 300
 rofi.padding: 10
-rofi.font: Gohu GohuFont 9
+rofi.font: misc gohup 9
 rofi.location: 1
 rofi.yoffset: 24
 rofi.fixed-visible-lines: false
