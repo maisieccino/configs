@@ -9,13 +9,9 @@
 !.i3*
 !lemon
 !mopidy
-!polybar
-!polybar/*
 !ranger
 !termite
 !.Xresources
 !.zshrc
 !polybar/
 !polybar/*
-
-!pixel
