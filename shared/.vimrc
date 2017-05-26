@@ -395,4 +395,4 @@ let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#09AA08'
 let g:indentLine_char = '│'
 
-autocmd FileType md setlocal textwidth=80
+autocmd FileType markdown setlocal textwidth=80

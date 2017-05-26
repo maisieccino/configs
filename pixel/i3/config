@@ -88,7 +88,7 @@ for_window [class="^Evince$"] floating enable
 
 #Wallpaper
 #exec --no-startup-id feh --bg-fill --no-xinerama /home/mbell/Pictures/Wallpapers/earth-view/google-earth-view-6216.jpg
-exec --no-startup-id feh --bg-fill --no-xinerama /home/mbell/gdrive/pikcha/coast.jpg
+exec --no-startup-id feh --bg-fill --no-xinerama /home/mbell/Pictures/Wallpapers/sea.jpg
 
 #Compton
 exec --no-startup-id compton -o 0.3 --backend glx --vsync opengl -b -i 1.0 --config ~/.config/compton.conf
@@ -100,7 +100,12 @@ for_window [class="^.*"] border pixel 2
 #new_float pixel 3
 
 # start a terminal
-bindsym $mod+Return exec urxvt 
+bindsym $mod+Return exec urxvt -geometry 100x30
+# scratchpad
+for_window [instance="__scratchpad"] move scratchpad 
+for_window [instance="__scratchpad"] floating enable
+exec --no-startup-id urxvt -name __scratchpad -geometry 50x20 -e zsh -c $HOME/scripts/scratchpad.sh
+bindsym $mod+F2 scratchpad show
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -108,7 +113,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+y fullscreen disable; floating enable; resize set 320 180; sticky enable; move window to position 1016 558
 
 # Menu
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec rofi -show drun
 
 # change focus
 bindsym $mod+j focus left

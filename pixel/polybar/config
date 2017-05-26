@@ -20,9 +20,12 @@ padding-right = 1
 module-margin-right = 2
 modules-left = i3 music 
 modules-center = Xwindow
+line-size = 2
 modules-right = Wifi Battery Clock Shutdown
 background = #77000000
 foreground = #ffffff
+;foreground = #000000
+;background = #77e1eeef
 tray-detached = true
 tray-position = 
 tray-offset-x = -310
@@ -38,12 +41,14 @@ label-focused-padding = 2
 ; label-unfocused = 
 label-unfocused-padding = 2
 label-unfocused-foreground = #4dffffff
+;label-unfocused-foreground = #4d000000
 ; label-urgent = 
 label-urgent-padding = 2
-label-urgent-foreground = #ffffff
+label-urgent-underline = #ffc107
 ; label-visible = 
 label-visible-padding = 2
 label-visible-foreground = #4dffffff
+;label-visible-foreground = #4d000000
 ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
@@ -123,6 +128,7 @@ format-connected-padding = 2
 label-connected = %essid%
 label-disconnected = 
 format-disconnected-foreground = #4dffffff
+;format-disconnected-foreground = #4d000000
 format-disconnected-padding = 2
 
 [module/Volume]
@@ -138,6 +144,7 @@ ramp-headphones-1 = 
 format-volume-padding = 1
 label-muted = 
 format-muted-foreground = #4dffffff
+;format-muted-foreground = #4d000000
 format-muted-padding = 1
 
 [module/Search]

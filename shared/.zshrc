@@ -113,7 +113,8 @@ plugins=(archlinux, bower, emoji, git)
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/.gem/ruby/2.4.0/bin:$HOME/scripts:~/go/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/scripts:~/go/bin
+PATH=$(ruby -e 'print Gem.user_dir')/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

@@ -92,6 +92,7 @@ rofi.yoffset: 24
 rofi.fixed-visible-lines: false
 rofi.fixed-num-lines: false
 rofi.sidebar-mode: true
+rofi.modi: window,drun,ssh
 
 xterm*locale: true
 xterm*faceName: Monaco for Powerline:size=9:antialias=true
