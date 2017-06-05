@@ -7,7 +7,8 @@ Laptop uses the configs in the pixel directory.
 
 Configurator tool to come soon(tm).
 
-To apply a theme, add the theme name to the file "theme_choice", then run `apply-theme.sh`.
+To apply a theme, run `./apply.sh $theme`, where `$theme` is the choice of theme
+(currently pixel or space). Leave blank for the default (pixel).
 
 # Vim keyboard shortcuts
 

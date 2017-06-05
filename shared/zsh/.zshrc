@@ -1,4 +1,4 @@
-export GTK2_RC_FILES=/etc/gtk-2.0/gtkrc:/home/mbell/.gtkrc-2.0
+export GTK2_RC_FILES=/etc/gtk-2.0/gtkrc:/home/$USER/.gtkrc-2.0
 alias rec='ffmpeg -f x11grab -s 1920x1080 -an -i :0.0 -c:v libvpx -b:v 5M -crf 10 -quality realtime -y'
 alias recaud='ffmpeg -f x11grab -s 1920x1080 -i :0.0 -c:v libvpx -b:v 5M -crf 10 -quality realtime -y'
 
@@ -39,7 +39,7 @@ unsetopt autocd
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/mbell/.zshrc'
+zstyle :compinstall filename '/home/$USER/.zshrc'
 
 export ANDROID_HOME="/opt/android-sdk"
 
@@ -188,7 +188,7 @@ eval "$(hub alias -s)"
 # Refresh gpg-agent tty in case user switches into an X session
 gpg-connect-agent updatestartuptty /bye >/dev/null
 
-export NVM_DIR="/home/mbell/.nvm"
+export NVM_DIR="/home/$USER/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 source ~/.zprofile
 echo "UPDATESTARTUPTTY" | gpg-connect-agent > /dev/null 2&>1
@@ -200,11 +200,13 @@ function countwords() {
     pdftotext $1 - | wc -w
 }
 
-source ~/.secrets
-export AURDEST=/build/mbell
+if [ -f ~/.secrets ]; then
+  source ~/.secrets
+fi
+export AURDEST=/build/$USER
 
 # added by travis gem
-[ -f /home/mbell/.travis/travis.sh ] && source /home/mbell/.travis/travis.sh
+[ -f /home/$USER/.travis/travis.sh ] && source /home/$USER/.travis/travis.sh
 alias nowplaying='echo "$(playerctl metadata artist 2>/dev/null) - $(playerctl metadata title 2>/dev/null)" '
 alias musicfile='while sleep 5; do echo "Now playing: $(nowplaying)" > /tmp/music ; done'
 alias django="python manage.py"
