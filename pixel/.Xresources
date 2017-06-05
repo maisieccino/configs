@@ -88,11 +88,12 @@ rofi.width: 300
 rofi.padding: 10
 rofi.font: misc gohup 9
 rofi.location: 1
+rofi.bw: 2
 rofi.yoffset: 24
 rofi.fixed-visible-lines: false
 rofi.fixed-num-lines: false
 rofi.sidebar-mode: true
-rofi.modi: window,drun,ssh
+rofi.modi: window,drun,run,ssh
 
 xterm*locale: true
 xterm*faceName: Monaco for Powerline:size=9:antialias=true

@@ -57,21 +57,9 @@ ws-icon-4 = 5;
 ws-icon-5 = 6;
 
 [module/Battery]
-type = internal/battery
-battery = BAT0
-adapter = ADP1
-poll-interval = 5
-time-format = (%H:%M)
-format-discharging = <ramp-capacity> <label-discharging>
-format-charging = <ramp-capacity> <label-charging>
-label-charging = %time%
-label-discharging = %time%
-label-full = 
-ramp-capacity-0 = !
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+type = custom/script
+exec = ~/scripts/battery
+click-left = /home/mbell/scripts/popup/bat.sh
 
 [module/Spotify]
 type = custom/script
@@ -95,7 +83,7 @@ exec = ~/scripts/nowplaying.sh
 ellipsis = true
 interval = 5
 maxlen = 40
-click-left = xdotool key super+p
+click-left = ~/scripts/popup/music.sh
 click-right = xdotool key super+shift+period
 scroll-up = xdotool key super+0
 scroll-down = xdotool key super+z
@@ -114,22 +102,25 @@ scroll-down = xdotool key super+z
 format-padding = 1
 
 [module/Wifi]
-type = internal/network
-interface = wlp1s0
-interval = 3
-format-connected = <ramp-signal> <label-connected>
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-5 = 
-format-connected-padding = 2
-label-connected = %essid%
-label-disconnected = 
-format-disconnected-foreground = #4dffffff
-;format-disconnected-foreground = #4d000000
-format-disconnected-padding = 2
+; type = internal/network
+; interface = wlp1s0
+; interval = 3
+; format-connected = <ramp-signal> <label-connected>
+; ramp-signal-0 = 
+; ramp-signal-1 = 
+; ramp-signal-2 = 
+; ramp-signal-3 = 
+; ramp-signal-4 = 
+; ramp-signal-5 = 
+; format-connected-padding = 2
+; label-connected = %essid%
+; label-disconnected = 
+; format-disconnected-foreground = #4dffffff
+; ;format-disconnected-foreground = #4d000000
+; format-disconnected-padding = 2
+type = custom/script
+exec = ~/scripts/network
+interval = 5
 
 [module/Volume]
 type = internal/volume
@@ -153,11 +144,19 @@ exec = echo " "
 click-left = ~/.config/polybar/scripts/search.sh
 format-padding = 1
 
+[module/Keymap]
+type = custom/script
+exec = ~/scripts/keylayout.sh layout
+click-right = ~/scripts/setkeylayout.sh
+label = " %output%"
+
 [module/Clock]
 type = internal/date
-date = %a, %d %b | %H:%M
+date = %Y-%m-%d
+time = %H:%M
 interval = 5
 format-padding = 2
+label = " %time%"
 
 [module/Shutdown]
 type = custom/script

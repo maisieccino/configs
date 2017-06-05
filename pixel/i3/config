@@ -1,6 +1,6 @@
 set Locker i3lock && sleep 1
 
-exec --no-startup-id setxkbmap gb
+exec --no-startup-id setxkbmap gb extd
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 set background  #263238
@@ -261,18 +261,19 @@ exec dunst
 exec --no-startup-id devmon --sync --exec-on-drive "notify-send 'Automount' '%l is now mounted at %d.'" --exec-on-remove "notify-send 'Automount' '%l has been removed.'"
 
 #Backlight
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight + 10
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight - 10
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/scripts/popup/brightness.sh up
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/scripts/popup/brightness.sh down
 
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ false && pactl set-sink-volume @DEFAULT_SINK@ -2%
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ false && pactl set-sink-volume @DEFAULT_SINK@ +2%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym $mod+p exec --no-startup-id playerctl play-pause
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
-bindsym $mod+Shift+comma exec --no-startup-id playerctl previous
-bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym $mod+Shift+period exec --no-startup-id playerctl next
-bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/scripts/popup/volume.sh down
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/popup/volume.sh up
+bindsym XF86AudioMute exec --no-startup-id ~/scripts/popup/volume.sh mute
+
+bindsym $mod+p exec --no-startup-id ~/scripts/popup/music.sh pause
+bindsym XF86AudioPlay exec --no-startup-id ~/scripts/popup/music.sh pause
+bindsym $mod+Shift+comma exec --no-startup-id ~/scripts/popup/music.sh prev
+bindsym XF86AudioPrev exec --no-startup-id ~/scripts/popup/music.sh prev
+bindsym $mod+Shift+period exec --no-startup-id ~/scripts/popup/music.sh next
+bindsym XF86AudioNext exec --no-startup-id ~/scripts/popup/music.sh next
 
 bindsym $mod+q exec --no-startup-id ~/scripts/power
 
