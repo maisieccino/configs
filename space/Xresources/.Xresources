@@ -78,13 +78,13 @@ rofi.terminal:	termite
 rofi.lines:		10
 rofi.eh:		1
 rofi.font:		SpaceMono Nerd Font 10
-rofi.color-window: argb:aa263238, argb:ff00c3ff, #26a69a
+rofi.color-window: argb:cc263238, argb:ff00c3ff, #26a69a
 rofi.color-normal: argb:0263238, #eceff1, argb:0263238, #f4246b, #eceff1
 rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
 rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
 rofi.sidebar-mode: true
 rofi.matching: regex
-rofi.modi: window,run,calc:qalc +u8 -nocurrencies
+rofi.modi: window,drun,run,calc:qalc +u8 -nocurrencies
 
 xterm*locale: true
 xterm*faceName: Monaco for Powerline:size=9:antialias=true

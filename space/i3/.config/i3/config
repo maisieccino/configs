@@ -89,7 +89,7 @@ for_window [class="^Evince$"] floating enable
 #Wallpaper
 exec_always --no-startup-id feh --bg-fill --no-xinerama /home/$USER/Pictures/Wallpapers/shuttle_iss.jpg
 #Compton
-exec --no-startup-id compton -o 0.3 --backend glx --vsync opengl -b -i 1.0 --config ~/.config/compton.conf
+exec --no-startup-id compton -o 0.3 --backend glx -m 0.8 --vsync opengl -b -i 1.0 --config ~/.config/compton.conf
 
 # borders
 #for_window [class="^.*"] border pixel 0
@@ -107,7 +107,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+y fullscreen disable; floating enable; resize set 480 270; sticky enable; move window to position 1420 790
 
 # Menu
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec rofi -show drun
 
 # change focus
 bindsym $mod+j focus left

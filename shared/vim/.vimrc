@@ -110,6 +110,8 @@ if has('langmap') && exists('+langnoremap')
 endif
 
 set number
+" relative line numbers yall
+set rnu
 
 " python from powerline.vim import setup as powerline_setup
 " python powerline_setup()

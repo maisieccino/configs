@@ -1,3 +1,6 @@
+# Settings file.
+source ~/.zsettings
+
 export GTK2_RC_FILES=/etc/gtk-2.0/gtkrc:/home/$USER/.gtkrc-2.0
 alias rec='ffmpeg -f x11grab -s 1920x1080 -an -i :0.0 -c:v libvpx -b:v 5M -crf 10 -quality realtime -y'
 alias recaud='ffmpeg -f x11grab -s 1920x1080 -i :0.0 -c:v libvpx -b:v 5M -crf 10 -quality realtime -y'
@@ -65,7 +68,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="hyperzsh"
+ZSH_THEME="${ZSH_THEME-"gitster"}"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
