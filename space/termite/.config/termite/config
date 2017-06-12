@@ -1,65 +1,43 @@
 [options]
-#font = Monaco for Powerline 9
 font = SpaceMono Nerd Font 10
 
-#[colors]
-## 'VisiBlue' from terminal.sexy
-## special
-#foreground      = #666699
-#foreground_bold = #666699
-#cursor          = #666699
-#background      = #000000
-#
-## black
-#color0  = #333366
-#color8  = #333399
-#
-## red
-#color1  = #6666cc
-#color9  = #9999ff
-#
-## green
-#color2  = #0099cc
-#color10 = #00ccff
-#
-## yellow
-#color3  = #3366cc
-#color11 = #6699ff
-#
-## blue
-#color4  = #006699
-#color12 = #0099cc
-#
-## magenta
-#color5  = #0066ff
-#color13 = #0099ff
-#
-## cyan
-#color6  = #669999
-#color14 = #66cccc
-#
-## white
-#color7  = #99cccc
-#color15 = #ccffff
-
-## Material
 [colors]
-background = #263238
-foreground = #eceff1
-cursor     = #b3bfc7
-color0     = #263238
-color8     = #37474f
-color1     = #ff9800
-color9     = #ffa74d
-color2     = #8bc34a
-color10    = #9ccc65
-color3     = #ffc107
-color11    = #ffa000
-color4     = #03a9f4
-color12    = #81d4fa
-color5     = #f4246b
-color13    = #ef4981
-color6     = #009688
-color14    = #26a69a
-color7     = #cfd8dc
-color15    = #eceff1
+# http://terminal.sexy/#Jh858fHxGx0e2Q55mN4A_V13A8vKRztr_s-HzMzGUFNU_iB7tuNU_qGCLfzebnGc_vGE-Pjy
+# special
+foreground      = #f1f1f1
+foreground_bold = #f1f1f1
+cursor          = #f1f1f1
+background      = rgba(38, 31, 57, 0.8)
+
+# black
+color0  = #1b1d1e
+color8  = #505354
+
+# red
+color1  = #d90e79
+color9  = #fe207b
+
+# green
+color2  = #98DE00
+color10 = #b6e354
+
+# yellow
+color3  = #fd5d77
+color11 = #fea182
+
+# blue
+color4  = #03cbca
+color12 = #2dfcde
+
+# magenta
+color5  = #473b6b
+color13 = #6e719c
+
+# cyan
+color6  = #fecf87
+color14 = #fef184
+
+# white
+color7  = #ccccc6
+color15 = #f8f8f2
+

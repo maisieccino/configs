@@ -24,43 +24,42 @@ URxvt.font: -*-tamzenforpowerline-medium-*-*-*-12-*-*-*-*-*-*-*,\
 
 URxvt*letterSpace:  0
 
-
 ! special
-*foreground:   #eceff1
-*background:   #263238
-*cursorColor:  #eceff1
+*foreground:   #f1f1f1
+*background:   #261f39
+*cursorColor:  #f1f1f1
 
 ! black
-*color0:       #263238
-*color8:       #37474f
+*color0:       #1b1d1e
+*color8:       #505354
 
 ! red
-*color1:       #ff9800
-*color9:       #ffa74d
+*color1:       #d90e79
+*color9:       #fe207b
 
 ! green
-*color2:       #8bc34a
-*color10:      #9ccc65
+*color2:       #98de00
+*color10:      #b6e354
 
 ! yellow
-*color3:       #ffc107
-*color11:      #ffa000
+*color3:       #fd5d77
+*color11:      #fea182
 
 ! blue
-*color4:       #03a9f4
-*color12:      #81d4fa
+*color4:       #03cbca
+*color12:      #2dfcde
 
 ! magenta
-*color5:       #EF4981
-*color13:      #ad1457
+*color5:       #473b6b
+*color13:      #6e719c
 
 ! cyan
-*color6:       #009688
-*color14:      #26a69a
+*color6:       #fecf87
+*color14:      #fef184
 
 ! white
-*color7:       #cfd8dc
-*color15:      #eceff1
+*color7:       #ccccc6
+*color15:      #f8f8f2
 
 ! rofi.terminal:	urxvt
 ! rofi.lines:		5
@@ -78,8 +77,8 @@ rofi.terminal:	termite
 rofi.lines:		10
 rofi.eh:		1
 rofi.font:		SpaceMono Nerd Font 10
-rofi.color-window: argb:cc263238, argb:ff00c3ff, #26a69a
-rofi.color-normal: argb:0263238, #eceff1, argb:0263238, #f4246b, #eceff1
+rofi.color-window: argb:cc261f39, argb:ff03cbca, #ccccc6
+rofi.color-normal: argb:cc261f39, #f1f1f1, argb:cc261f39, #d90e79, #eceff1
 rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
 rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
 rofi.sidebar-mode: true

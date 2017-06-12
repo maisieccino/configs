@@ -10,6 +10,11 @@ Configurator tool to come soon(tm).
 To apply a theme, run `./apply.sh $theme`, where `$theme` is the choice of theme
 (currently pixel or space). Leave blank for the default (pixel).
 
+# Previews
+
+## Space
+![](space/preview.png)
+
 # Vim keyboard shortcuts
 
 | description         | key           |

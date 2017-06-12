@@ -172,11 +172,6 @@ export COLOR_15=$( cat ~/.Xresources | awk '/color15/ { printf "%s\n", $2 }' )
 
 eval $(dircolors ~/.dircolors)
 
-# Start the gpg-agent if not already running
-if ! pgrep -x -u "${USER}" gpg-agent >/dev/null 2>&1; then
-  gpg-connect-agent /bye >/dev/null 2>&1
-fi
-
 # Set SSH to use gpg-agent
 unset SSH_AGENT_PID
 if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
@@ -194,7 +189,6 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 export NVM_DIR="/home/$USER/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 source ~/.zprofile
-echo "UPDATESTARTUPTTY" | gpg-connect-agent > /dev/null 2&>1
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias dttmomsea="echo 'dont zsh me or my son ever again'"
 alias timestamp="date +%Y%m%d%H%M%S"
