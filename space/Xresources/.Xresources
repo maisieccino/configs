@@ -78,7 +78,7 @@ rofi.lines:		10
 rofi.eh:		1
 rofi.font:		SpaceMono Nerd Font 10
 rofi.color-window: argb:cc261f39, argb:ff03cbca, #ccccc6
-rofi.color-normal: argb:cc261f39, #f1f1f1, argb:cc261f39, #d90e79, #eceff1
+rofi.color-normal: argb:00261f39, #f1f1f1, argb:00261f39, #d90e79, #eceff1
 rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
 rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
 rofi.sidebar-mode: true
