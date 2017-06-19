@@ -207,4 +207,12 @@ export AURDEST=/build/$USER
 alias nowplaying='echo "$(playerctl metadata artist 2>/dev/null) - $(playerctl metadata title 2>/dev/null)" '
 alias musicfile='while sleep 5; do echo "Now playing: $(nowplaying)" > /tmp/music ; done'
 alias django="python manage.py"
+
+gitignore() {
+  if [ ! -f ./.gitignore ]; then
+    curl "https://raw.githubusercontent.com/github/gitignore/master/$1.gitignore" > ./.gitignore
+  fi
+}
+
 export RANGER_LOAD_DEFAULT_RC=false
+alias nodejs=node

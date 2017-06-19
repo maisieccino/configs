@@ -9,7 +9,33 @@
 
 [settings]
 
-[bar/Bar]
+[bar/mBar]
+bottom = false
+dock = false
+wm-restack = i3
+width = 100%
+height = 24
+padding-left = 3
+padding-right = 1
+module-margin-right = 2
+modules-left = i3 music 
+modules-center = Xwindow
+monitor = eDP1
+line-size = 2
+modules-right = Wifi Battery Clock Shutdown
+background = #77000000
+foreground = #ffffff
+;foreground = #000000
+;background = #77e1eeef
+tray-detached = true
+tray-position = 
+tray-offset-x = -310
+tray-maxsize = 12
+tray-padding = 22
+font-0 = misc gohup:size=9:style=Bold;0
+font-1 = Wuncon Siji:size=9;0
+
+[bar/eBar]
 bottom = false
 dock = false
 wm-restack = i3
@@ -49,6 +75,7 @@ label-urgent-underline = #ffc107
 label-visible-padding = 2
 label-visible-foreground = #4dffffff
 ;label-visible-foreground = #4d000000
+pin-workspaces = true
 ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;

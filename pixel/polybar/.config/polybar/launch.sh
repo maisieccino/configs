@@ -7,6 +7,9 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar1 and bar2
-polybar Bar -r &
+polybar mBar -r &
+if [ $(xrandr -q | grep " connected" | wc -l ) -gt 1 ]; then
+    polybar eBar -r &
+fi
 
 echo "Bar launched..."

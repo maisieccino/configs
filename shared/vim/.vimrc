@@ -17,6 +17,8 @@ endif
 set clipboard=unnamedplus
 set background=dark
 
+set scrolloff=10
+
 set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
 
 " Use Vim settings, rather than Vi settings (much better!).
@@ -191,13 +193,15 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" misc utisl
+" misc utils
 Plug 'Rykka/colorv.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
+
+Plug 'editorconfig/editorconfig-vim'
 
 " LANGUAGES
 Plug 'scrooloose/syntastic'
@@ -210,6 +214,8 @@ Plug 'mustache/vim-mustache-handlebars'
 
 " JS
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
 Plug 'ternjs/tern_for_vim'
 let g:tern_show_argument_hints='on_hold'
 let g:tern_map_keys=1
@@ -274,6 +280,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe='PATH=$(npm bin):$PATH eslint'
+let g:syntastic_javascript_eslint_exec = '/bin/ls'
 
 let g:limelight_conceal_ctermfg = 'Gray'
 let g:limelight_conceal_guifg = '#D47F35'
