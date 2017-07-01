@@ -15,6 +15,7 @@ URxvt*fading: 20
 URxvt*internalBorder: 0
 URxvt*saveLines: 1000
 URxvt*buffered:	false
+URxvt*depth: 32
 
 URxvt.keysym.M-C-c:	perl:clipboard:copy
 URxvt.keysym.M-C-v:	perl:clipboard:paste
@@ -31,7 +32,7 @@ URxvt*letterSpace:  0
 
 ! special
 *foreground:   #eceff1
-*background:   #263238
+*background:   [95]#263238
 *cursorColor:  #eceff1
 
 ! black

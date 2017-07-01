@@ -99,11 +99,11 @@ for_window [class="^.*"] border pixel 2
 #new_float pixel 3
 
 # start a terminal
-bindsym $mod+Return exec urxvt -geometry 100x30
+bindsym $mod+Return exec urxvt -geometry 110x40
 # scratchpad
 for_window [instance="__scratchpad"] move scratchpad 
 for_window [instance="__scratchpad"] floating enable
-exec --no-startup-id urxvt -name __scratchpad -geometry 50x20 -e zsh -c $HOME/scripts/scratchpad.sh
+exec --no-startup-id urxvt -name __scratchpad -geometry 100x50 -e zsh -c $HOME/scripts/scratchpad.sh
 bindsym $mod+F2 scratchpad show
 
 # kill focused window
