@@ -7,7 +7,7 @@ font = SpaceMono Nerd Font 10
 foreground      = #f1f1f1
 foreground_bold = #f1f1f1
 cursor          = #f1f1f1
-background      = rgba(38, 31, 57, 0.8)
+background      = rgba(38, 31, 57, 0.9)
 
 # black
 color0  = #1b1d1e
