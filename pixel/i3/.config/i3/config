@@ -87,7 +87,7 @@ for_window [class="^Skype$"] floating enable
 for_window [class="^Evince$"] floating enable
 
 #Wallpaper
-exec --no-startup-id feh --bg-fill /home/$USER/Pictures/Wallpapers/sea.jpg
+exec_always --no-startup-id feh --bg-fill /home/$USER/wallpaper
 
 #Compton
 exec --no-startup-id compton -o 0.3 --backend glx --vsync opengl -b -i 1.0 --config ~/.config/compton.conf
@@ -280,7 +280,7 @@ bindsym $mod+q exec --no-startup-id ~/scripts/power
 exec xflux -l 51.5333408
 
 #screenshots
-bindsym Print exec --no-startup-id scrot '/home/$USER/Documents/scrots/auto/%Y-%m-%d_%H%M%S_scrot.png' -e 'notify-send "scrot" "Screenshot saved as $n"'
+bindsym Print exec --no-startup-id scrot "/home/$USER/Documents/scrots/auto/%Y-%m-%d_%H%M%S_scrot.png" -e 'notify-send "scrot" "Screenshot saved as $n"'
 bindsym $mod+Print exec --no-startup-id ~/scripts/scrotsel
 
 exec notify-send -a i3 "loaded" "Welcome to i3."

@@ -31,41 +31,41 @@ URxvt*letterSpace:  0
 
 
 ! special
-*foreground:   #eceff1
-*background:   [95]#263238
-*cursorColor:  #eceff1
+*foreground:   #dbe6ec
+*background:   [95]#2c3643
+*cursorColor:  #ffffff
 
 ! black
-*color0:       #263238
-*color8:       #37474f
+*color0:       #2c3643
+*color8:       #67747c
 
 ! red
-*color1:       #ff9800
-*color9:       #ffa74d
+*color1:       #fa5e5b
+*color9:       #e57977
 
 ! green
-*color2:       #8bc34a
-*color10:      #9ccc65
+*color2:       #16c98d
+*color10:      #c7e6aa
 
 ! yellow
-*color3:       #ffc107
-*color11:      #ffa000
+*color3:       #feef6d
+*color11:      #ffc83f
 
 ! blue
-*color4:       #03a9f4
-*color12:      #81d4fa
+*color4:       #288ad6
+*color12:      #8abee5
 
 ! magenta
-*color5:       #EF4981
-*color13:      #ad1457
+*color5:       #ff708e
+*color13:      #e28ea0
 
 ! cyan
-*color6:       #009688
-*color14:      #26a69a
+*color6:       #27dede
+*color14:      #96f7f7
 
 ! white
-*color7:       #cfd8dc
-*color15:      #eceff1
+*color7:       #dbe6ec
+*color15:      #99a9b3
 
 !rofi.width:		50
 !rofi.padding:	100
