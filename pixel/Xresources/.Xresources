@@ -20,7 +20,7 @@ URxvt*depth: 32
 URxvt.keysym.M-C-c:	perl:clipboard:copy
 URxvt.keysym.M-C-v:	perl:clipboard:paste
 
-URxvt.perl-ext-common: default,matcher
+URxvt.perl-ext-common: default
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 URxvt.matcher.rend.0: Uline Bold fg5
@@ -67,26 +67,9 @@ URxvt*letterSpace:  0
 *color7:       #dbe6ec
 *color15:      #99a9b3
 
-!rofi.width:		50
-!rofi.padding:	100
-!rofi.fullscreen: true
-!rofi.fixed-num-lines: true
-! rofi.opacity:	65
-!rofi.bw:		0
-!rofi.location:	0
-!!rofi.yoffset:	-20
-!rofi.terminal:	urxvt
-!rofi.lines:		10
-!rofi.eh:		1
-!rofi.font:		Channel 4 Horseferry 36
-!rofi.color-window: argb:aa263238, argb:aa263238, #26a69a
-!rofi.color-normal: argb:0263238, #eceff1, argb:0263238, #f4246b, #eceff1
-!rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
-!rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
-
 rofi.color-enabled: true
-rofi.color-window: argb:be263238, #03a9f4, #03a9f4
-rofi.color-normal: argb:0fdf6e3, #81d4fa, argb:0eee8d5, #03a9f4, #eceff1
+rofi.color-window: argb:be2c3643, #8abee5, #8abee5
+rofi.color-normal: argb:0fdf6e3, #8abee5, argb:0eee8d5, #8abee5, #2c3643
 rofi.color-active: argb:0fdf6e3, #ffc107, argb:0eee8d5, #ffc107, #263238
 rofi.color-urgent: argb:0fdf6e3, #ef4981, argb:0eee8d5, #ef4981, #eceff1
 rofi.fullscreen: false

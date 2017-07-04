@@ -5,7 +5,7 @@ SILENT=${SILENT-true}
 DIRNAME=$(dirname $0)
 cd $DIRNAME
 
-MODULES=( "gtk" "vim" "zsh" )
+MODULES=( "gtk" "vim" "nvim" "zsh" )
 
 ARG="-t /home/$USER"
 

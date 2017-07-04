@@ -3,50 +3,29 @@ set Locker i3lock && sleep 1
 exec --no-startup-id setxkbmap gb extd
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-set background  #263238
-set foreground  #eceff1
-set cursor      #b3bfc7
-set color0      #263238
-set color8      #37474f
-set color1      #ff9800
-set color9      #ffa74d
-set color2      #8bc34a
-set color10     #9ccc65
-set color3      #ffc107
-set color11     #ffa000
-set color4      #03a9f4
-set color12     #81d4fa
-set color5      #f4246b
-set color13     #ef4981
-set color6      #009688
-set color14     #26a69a
-set color7      #cfd8dc
-set color15     #eceff1
+set foreground   #dbe6ec
+set background   #2c3643
+set color0       #2c3643
+set color8       #67747c
+set color1       #fa5e5b
+set color9       #e57977
+set color2       #16c98d
+set color10      #c7e6aa
+set color3       #feef6d
+set color11      #ffc83f
+set color4       #288ad6
+set color12      #8abee5
+set color5       #ff708e
+set color13      #e28ea0
+set color6       #27dede
+set color14      #96f7f7
+set color7       #dbe6ec
+set color15      #99a9b3
 
-#set foreground   #ffffff
-#set background   #000000
-#set cursorColor  #ffffff
-#set color0       #333333
-#set color8       #3d3d3d
-#set color1       #8c4665
-#set color9       #bf4d80
-#set color2       #287373
-#set color10      #53a6a6
-#set color3       #7c7c99
-#set color11      #9e9ecb
-#set color4       #395573
-#set color12      #477ab3
-#set color5       #5e468c
-#set color13      #7e62b3
-#set color6       #31658c
-#set color14      #6096bf
-#set color7       #899ca1
-#set color15      #c0c0c0
-
-set $FOCUS #18A4DB
-set $UNFOCUS #127196
-set $BORDERF #00c3FF
-set $BORDERU #00245E
+set $FOCUS #8abee5
+set $UNFOCUS #288ad6
+set $BORDERF #8abee5
+set $BORDERU #288ad6
 
 set $float exec --no-startup-id ~/.config/shadow_work_around.sh, floating toggle
 
@@ -90,7 +69,7 @@ for_window [class="^Evince$"] floating enable
 exec_always --no-startup-id feh --bg-fill /home/$USER/wallpaper
 
 #Compton
-exec --no-startup-id compton -o 0.3 --backend glx --vsync opengl -b -i 1.0 --config ~/.config/compton.conf
+exec --no-startup-id compton -o 0.3 --backend xrender --vsync opengl -b -i 1.0 --config ~/.config/compton.conf
 
 # borders
 #for_window [class="^.*"] border pixel 0
@@ -103,7 +82,7 @@ bindsym $mod+Return exec urxvt -geometry 110x40
 # scratchpad
 for_window [instance="__scratchpad"] move scratchpad 
 for_window [instance="__scratchpad"] floating enable
-exec --no-startup-id urxvt -name __scratchpad -geometry 100x50 -e zsh -c $HOME/scripts/scratchpad.sh
+exec --no-startup-id urxvt -name __scratchpad -geometry 110x40 -e zsh -c $HOME/scripts/scratchpad.sh
 bindsym $mod+F2 scratchpad show
 
 # kill focused window
