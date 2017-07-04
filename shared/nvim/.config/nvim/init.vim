@@ -200,9 +200,19 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 let g:jsx_ext_required = 0
-Plug 'ternjs/tern_for_vim'
-let g:tern_show_argument_hints='on_hold'
-let g:tern_map_keys=1
+
+Plug 'carlitux/deoplete-ternjs'
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+set completeopt-=preview
+
+"Add extra filetypes
+let g:tern#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ 'vue',
+                \ '...'
+                \ ]
 
 " JSON
 au FileType json let g:indentLine_conceallevel = 0
@@ -290,6 +300,9 @@ function! GoyoAfter()
   call s:set_cursor_line()
 endfunction
 let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
+let &t_SI = "\<Esc>[2 q"
+let &t_SR = "\<Esc>[2 q"
+let &t_EI = "\<Esc>[2 q"
 
 autocmd! ColorScheme * call s:set_cursor_line()
 
@@ -320,7 +333,7 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     deoplete#undo_completion()
-inoremap <expr><C-l>     deoplete#complete_common_string()
+inoremap <expr><C-l>     deoplete#manual_complete()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -349,10 +362,10 @@ inoremap <expr> <BS>  pumvisible() ? deoplete#smart_close_popup()."\<BS>" : deli
 "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
 " Enable omni completion.
+let g:deoplete#complete_method = "omnifunc"
 autocmd FileType markdown NeoCompleteLock
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=tern#Complete
 autocmd FileType python setlocal omnifunc=jedi#completions
 let g:jedi#completions_enabled = 0
 let g:jedi#auto_vim_configuration = 0
