@@ -68,8 +68,8 @@ URxvt*letterSpace:  0
 *color15:      #99a9b3
 
 rofi.color-enabled: true
-rofi.color-window: argb:be2c3643, #8abee5, #8abee5
-rofi.color-normal: argb:0fdf6e3, #8abee5, argb:0eee8d5, #8abee5, #2c3643
+rofi.color-window: argb:be2c3643, argb:be2c3643, #dbe6ec
+rofi.color-normal: argb:0fdf6e3, #dbe6ec, argb:0eee8d5, #288ad6, #2c3643
 rofi.color-active: argb:0fdf6e3, #ffc107, argb:0eee8d5, #ffc107, #263238
 rofi.color-urgent: argb:0fdf6e3, #ef4981, argb:0eee8d5, #ef4981, #eceff1
 rofi.fullscreen: false
