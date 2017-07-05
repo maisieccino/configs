@@ -69,11 +69,11 @@ for_window [class="^Evince$"] floating enable
 exec_always --no-startup-id feh --bg-fill /home/$USER/wallpaper
 
 #Compton
-exec --no-startup-id compton -o 0.3 --backend xrender --vsync opengl -b -i 1.0 --config ~/.config/compton.conf
+exec --no-startup-id compton -o 0.3 -b -i 1.0 --config ~/.config/compton.conf
 
 # borders
 #for_window [class="^.*"] border pixel 0
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 #new_window pixel 3
 #new_float pixel 3
 
@@ -262,5 +262,5 @@ exec xflux -l 51.5333408
 bindsym Print exec --no-startup-id scrot "/home/$USER/Documents/scrots/auto/%Y-%m-%d_%H%M%S_scrot.png" -e 'notify-send "scrot" "Screenshot saved as $n"'
 bindsym $mod+Print exec --no-startup-id ~/scripts/scrotsel
 
-exec notify-send -a i3 "loaded" "Welcome to i3."
+exec notify-send -a i3 "i3 loaded" "Hello, $USER."
 
