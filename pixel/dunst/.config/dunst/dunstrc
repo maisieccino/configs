@@ -216,3 +216,7 @@
 #    summary = *twitter.com*
 #    urgency = normal
 #
+
+[spotify]
+    appname = Spotify
+    urgency = normal
