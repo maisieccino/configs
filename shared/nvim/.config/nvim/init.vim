@@ -363,7 +363,6 @@ inoremap <expr> <BS>  pumvisible() ? deoplete#smart_close_popup()."\<BS>" : deli
 
 " Enable omni completion.
 let g:deoplete#complete_method = "omnifunc"
-autocmd FileType markdown NeoCompleteLock
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType python setlocal omnifunc=jedi#completions
