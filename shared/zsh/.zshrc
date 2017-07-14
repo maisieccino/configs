@@ -2,7 +2,9 @@
 source ~/.zsettings
 
 export GTK2_RC_FILES=/etc/gtk-2.0/gtkrc:/home/$USER/.gtkrc-2.0
-alias rec='ffmpeg -f x11grab -s 1920x1080 -an -i :0.0 -c:v libvpx -b:v 5M -crf 10 -quality realtime -y'
+function rec() {
+  ffmpeg -f x11grab -s ${1}x${2} -an -i :0.0 -c:v libvpx -b:v 5M -crf 10 -quality realtime -y ${3}
+}
 alias recaud='ffmpeg -f x11grab -s 1920x1080 -i :0.0 -c:v libvpx -b:v 5M -crf 10 -quality realtime -y'
 
 alias update='gem update && sudo pacman -Syu && yaourt -Syua'
@@ -129,7 +131,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR='nvim'
 else
   export EDITOR='vim'
 fi
@@ -237,6 +239,11 @@ gitignore() {
     curl "https://raw.githubusercontent.com/github/gitignore/master/$1.gitignore" > ./.gitignore
   fi
 }
+
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv2
+export WORKON_HOME=~/.virtualenvs
+source /usr/bin/virtualenvwrapper_lazy.sh
 
 export RANGER_LOAD_DEFAULT_RC=false
 alias nodejs=node
