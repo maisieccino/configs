@@ -1,4 +1,4 @@
-menu,
- .menu {
-     background-color: rgba(255, 255, 255, 0.5);
- }
+.-vala-panel-appmenu-private {
+     color: "#2c3643";
+     background-color: "#dbe6ec";
+}
