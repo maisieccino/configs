@@ -56,7 +56,7 @@ mkcd() {
     cd "$1"
 }
 
-git-wholazy() {
+git-counter() {
     git log --author="$1" --pretty=tformat: --numstat | awk '{ s += $1; t += $2 } END { print s " added, "t " removed" }'
 }
 
@@ -133,7 +133,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='nvim'
 else
-  export EDITOR='vim'
+  export EDITOR='nvim'
 fi
 
 # Compilation flags
@@ -226,7 +226,9 @@ function countwords() {
 if [ -f ~/.secrets ]; then
   source ~/.secrets
 fi
-export AURDEST=/build/$USER
+
+# do we really need this anymore
+# export AURDEST=/build/$USER
 
 # added by travis gem
 [ -f /home/$USER/.travis/travis.sh ] && source /home/$USER/.travis/travis.sh
@@ -247,3 +249,4 @@ source /usr/bin/virtualenvwrapper_lazy.sh
 
 export RANGER_LOAD_DEFAULT_RC=false
 alias nodejs=node
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

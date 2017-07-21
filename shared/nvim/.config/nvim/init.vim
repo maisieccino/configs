@@ -19,7 +19,7 @@ set background=dark
 
 set scrolloff=10
 
-set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after
+set runtimepath=~/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/.vim/after,~/.local/share/nvim/site
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -201,18 +201,9 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 let g:jsx_ext_required = 0
 
-Plug 'carlitux/deoplete-ternjs'
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+Plug 'wokalski/autocomplete-flow'
+let g:autocomplete_flow#insert_paren_after_function = 0
 set completeopt-=preview
-
-"Add extra filetypes
-let g:tern#filetypes = [
-                \ 'jsx',
-                \ 'javascript.jsx',
-                \ 'vue',
-                \ '...'
-                \ ]
 
 " JSON
 au FileType json let g:indentLine_conceallevel = 0
