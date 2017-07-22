@@ -11,7 +11,7 @@
     #
     # for a complete reference see http://developer.gnome.org/pango/stable/PangoMarkupFormat.html
     # If markup is not allowed, those tags will be stripped out of the message.
-    allow_markup = yes
+    markup = yes
 
     # The format of the message. Possible variables are:
     #   %a  appname
@@ -21,7 +21,7 @@
     #   %I  iconname (without its path)
     #   %p  progress value if set ([  0%] to [100%]) or nothing
     # Markup is allowed
-    format = "<b>  %s</b>\n%b"
+    format = "<b>%s</b>\n%b\n%p"
 
     # Sort messages by urgency
     sort = yes
@@ -61,11 +61,13 @@
     # right side of the screen.  Y is measured from the top and down respectevly.
     # The width can be negative. In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "240x5+40-40"
+    geometry = "300x5+40-40"
 
     # The transparency of the window. range: [0; 100]
     # This option will only work if a compositing windowmanager is present (e.g. xcompmgr, compiz, etc..)
-    transparency = 30
+    transparency = 25
+
+    shrink = true
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -98,13 +100,13 @@
 
     # Draw a line of 'separatpr_height' pixel height between two notifications.
     # Set to 0 to disable
-    separator_height = 2
+    separator_height = 0
 
     # padding between text and separator
-    padding = 10
+    padding = 2
 
     # horizontal padding
-    horizontal_padding = 8
+    horizontal_padding = 4
 
     # Define a color for the separator.
     # possible values are:
@@ -117,21 +119,21 @@
     # print a notification on startup
     # This is mainly for error detection, since dbus (re-)starts dunst
     # automatically after a crash.
-    startup_notification = true
+    startup_notification = false
 
     # dmenu path
-    dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = /usr/bin/rofi -dmenu -p dunst
 
     # browser for opening urls in context menu
-    browser = /usr/bin/firefox -new-tab
+    browser = /usr/bin/chromium -new-tab
 
     icon_position = left
+    max_icon_size = 62
 
     icon_folders = /usr/share/icons/gnome/48x48/status/:/usr/share/icons/gnome/48x48/devices/:/usr/share/icons/gnome/48x48/categories/
 
-[frame]
-    width = 2
-    color = "#03cbca"
+    frame_width = 2
+    frame_color = "#03cbca"
 
 [shortcuts]
     # shortcuts are specified as [modifier+][modifier+]...key
@@ -143,14 +145,14 @@
     close = ctrl+space
 
     # close all notifications
-    close_all = ctrl+shift+space
+    close_all = mod4+ctrl+o
 
     # redisplay last message(s)
     # On the US keyboard layout 'grave' is normally above TAB and left of '1'.
-    history = ctrl+grave
+    history = mod4+shift+o
 
     # context menu
-    context = ctrl+shift+period
+    context = mod4+o
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
@@ -226,8 +228,8 @@
 #    urgency = normal
 
 [scrot]
-    summary = scrot
-    format = "<b>  %s</b>\n%b"
+    appname = scrot
+    format = "<b>🖥 %s</b>\n%b"
 
 [mopidy]
     summary = Mopidy
@@ -258,3 +260,11 @@
     summary = "*Motorola MotoG3*"
     format = "<b> %s</b>\n%b"
     urgency = low
+
+[Telegram Desktop]
+    appname = "telegram desktop"
+    format = "<b>😲 %s</b>\n%b"
+
+[spotify]
+    appname = "spotify"
+    format = "<b>🕺 %s</b>\n%b"

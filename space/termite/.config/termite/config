@@ -1,4 +1,5 @@
 [options]
+font = Noto Color Emoji 10
 font = SpaceMono Nerd Font 10
 
 [colors]

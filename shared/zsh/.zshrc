@@ -250,3 +250,8 @@ source /usr/bin/virtualenvwrapper_lazy.sh
 export RANGER_LOAD_DEFAULT_RC=false
 alias nodejs=node
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# we want yarn moji damnit
+yarn() {
+  /usr/bin/yarn $@ --emoji
+}

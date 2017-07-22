@@ -233,10 +233,13 @@ bindsym $mod+q exec --no-startup-id ~/scripts/power
 exec xflux -l 51.5333408
 
 #screenshots
-bindsym Print exec --no-startup-id scrot "/home/$USER/Documents/scrots/auto/%Y-%m-%d_%H%M%S_scrot.png" -e 'notify-send "scrot" "Screenshot saved as $n"'
+bindsym Print exec --no-startup-id scrot "/home/$USER/Documents/scrots/auto/%Y-%m-%d_%H%M%S_scrot.png" -t 10 -e '~/scripts/scrot-notify.sh "$n"'
 bindsym $mod+Print exec --no-startup-id ~/scripts/scrotsel
 
 exec notify-send -a i3 "loaded" "Welcome to i3."
 
 #Wallpaper
 exec_always --no-startup-id feh --no-fehbg --bg-fill /home/$USER/Pictures/Wallpapers/kurzgesagt2.jpg
+
+# spotify notification daemon
+exec --no-startup-id $HOME/scripts/spotify-listen.sh
