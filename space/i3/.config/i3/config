@@ -2,6 +2,7 @@ set Locker i3lock && sleep 1
 
 exec --no-startup-id setxkbmap gb extd
 
+set $none #00000000
 set_from_resource $background i3wm.background #263238
 set_from_resource $foreground i3wm.foreground #eceff1
 set_from_resource $cursor     i3wm.cursor     #b3bfc7
@@ -10,7 +11,7 @@ set_from_resource $color8     i3wm.color8     #37474f
 set_from_resource $color1     i3wm.color1     #ff9800
 set_from_resource $color9     i3wm.color9     #ffa74d
 set_from_resource $color2     i3wm.color2     #8bc34a
-set_from_resource $color10    i3wm.color19    #9ccc65
+set_from_resource $color10    i3wm.color10    #9ccc65
 set_from_resource $color3     i3wm.color3     #ffc107
 set_from_resource $color11    i3wm.color11    #ffa000
 set_from_resource $color4     i3wm.color4     #03a9f4
@@ -71,6 +72,7 @@ exec --no-startup-id compton -o 0.3 --backend glx -m 0.8 --vsync opengl -b -i 1.
 # borders
 #for_window [class="^.*"] border pixel 0
 for_window [class="^.*"] border pixel 2
+for_window [class="Dunst"] border pixel 0
 #new_window pixel 3
 #new_float pixel 3
 
@@ -200,9 +202,10 @@ bindsym $mod+r mode "resize"
 # colours				border      bg		  text	    indicator
 client.focused 		  	$color12    $BORDERF  $FOCUS    $BORDERF
 client.focused_inactive	$color12    $UNFOCUS  $UNFOCUS  $UNFOCUS
+client.placeholder      $none       $none     $none     $none
 client.unfocused		$color4     $BORDERU  $UNFOCUS  $BORDERU
 client.urgent			$color5     $FOCUS    $FOCUS    $FOCUS
-client.background		$UNFOCUS
+client.background		#00000000
 
 # BAR
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
