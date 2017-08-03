@@ -34,6 +34,7 @@ margin-bottom = 0
 
 [bar/lbar]
 monitor = DVI-D-0
+monitor-fallback = eDP1
 bottom = true
 wm-restack = i3
 width = 100%
@@ -65,6 +66,7 @@ scroll-down = i3wm-wsprev
 inherit = bar/lbar
 tray-position =
 monitor = HDMI-0
+monitor-fallback =
 
 [module/i3]
 type = internal/i3
