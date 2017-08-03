@@ -41,7 +41,7 @@ width = 100%
 height = 24
 modules-left = i3 music
 modules-center = Xwindow
-modules-right = volrocker Clock Shutdown
+modules-right = ${file:/home/mbell/.config/polybar/bar-layout:volrocker Clock Shutdown}
 module-margin-right = 1
 background = #cb313743
 foreground = ${colors.foreground}
@@ -92,21 +92,9 @@ ws-icon-4 = 5;
 ws-icon-5 = 6;
 
 [module/Battery]
-type = internal/battery
-battery = BAT0
-adapter = ADP1
-poll-interval = 5
-time-format = (%H:%M)
-format-discharging = <ramp-capacity> <label-discharging>
-format-charging = <ramp-capacity> <label-charging>
-label-charging = %time%
-label-discharging = %time%
-label-full = 
-ramp-capacity-0 = !
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+type = custom/script
+exec = ~/scripts/battery
+click-left = /home/$USER/scripts/popup/bat.sh
 
 [module/Xwindow]
 type = internal/xwindow
