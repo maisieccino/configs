@@ -1,0 +1,206 @@
+;==================================================;
+;						   ;
+;   To learn more about how to configure Polybar   ;
+;   go to https://github.com/jaagr/polybar	   ;
+;						   ;
+;   The README contains alot of information	   ;
+;						   ;
+;==================================================;
+
+[settings]
+
+[colors]
+foreground  = ${xrdb:foreground:#000000}
+background  = ${xrdb:background:#000000}
+color0      = ${xrdb:color0:#000000}
+color1      = ${xrdb:color1:#000000}
+color2      = ${xrdb:color2:#000000}
+color3      = ${xrdb:color3:#000000}
+color4      = ${xrdb:color4:#000000}
+color5      = ${xrdb:color5:#000000}
+color6      = ${xrdb:color6:#000000}
+color7      = ${xrdb:color7:#000000}
+color8      = ${xrdb:color8:#000000}
+color9      = ${xrdb:color9:#000000}
+color10     = ${xrdb:color10:#000000}
+color11     = ${xrdb:color11:#000000}
+color12     = ${xrdb:color12:#000000}
+color13     = ${xrdb:color13:#000000}
+color14     = ${xrdb:color14:#000000}
+color15     = ${xrdb:color15:#000000}
+
+[global/wm]
+margin-bottom = 0
+
+[bar/lbar]
+monitor = DVI-D-0
+bottom = true
+wm-restack = i3
+width = 100%
+height = 24
+modules-left = i3 music
+modules-center = Xwindow
+modules-right = volrocker Clock Shutdown
+module-margin-right = 1
+background = #cb313743
+foreground = ${colors.foreground}
+line-size = 2
+tray-position = right
+tray-detached = false
+tray-maxsize = 16
+tray-transparent = false
+tray-background = ${root.background}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 5
+tray-scale = 1.0
+border-size = 0
+font-0 = Circular Std Book:size=10;0
+font-1 = FontAwesome:size=10;0
+font-2 = DejaVu Sans Mono:size=10;0
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+[bar/rbar]
+inherit = bar/lbar
+tray-position =
+monitor = HDMI-0
+
+[module/i3]
+type = internal/i3
+; label-focused = 
+label-focused-padding = 2
+label-focused-underline = ${colors.color4}
+; label-unfocused = 
+label-unfocused-padding = 2
+label-unfocused-foreground = #7dd3d0c8
+; label-urgent = 
+label-urgent-padding = 2
+label-urgent-background= ${colors.color3}
+label-urgent-foreground = ${colors.background}
+; label-visible = 
+label-visible-padding = 2
+label-visible-foreground = #f1f1f1
+pin-workspaces = true
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+
+[module/Battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+poll-interval = 5
+time-format = (%H:%M)
+format-discharging = <ramp-capacity> <label-discharging>
+format-charging = <ramp-capacity> <label-charging>
+label-charging = %time%
+label-discharging = %time%
+label-full = 
+ramp-capacity-0 = !
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+[module/Xwindow]
+type = internal/xwindow
+label-maxlen = 60
+
+[module/music]
+type = custom/script
+exec = ~/scripts/nowplaying.sh
+ellipsis = true
+interval = 5
+maxlen = 40
+click-left = xdotool key super+p
+click-right = xdotool key super+shift+period
+scroll-up = xdotool key super+0
+scroll-down = xdotool key super+z
+format-padding = 1
+
+[module/Player]
+type = custom/script
+exec = ~/.config/polybar/scripts/player.sh 2>/dev/null
+ellipsis = true
+interval = 5
+maxlen = 40
+click-left = xdotool key super+z
+click-right = xdotool key super+0
+scroll-up = xdotool key super+0
+scroll-down = xdotool key super+z
+format-padding = 1
+
+[module/Wifi]
+type = internal/network
+interface = wlp1s0
+interval = 3
+format-connected = <ramp-signal> <label-connected>
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-5 = 
+format-connected-padding = 2
+label-connected = %essid%
+label-disconnected = 
+format-disconnected-foreground = #4df1f1f1
+format-disconnected-padding = 2
+
+[module/Ethernet]
+type = internal/network
+interface = enp3s0
+
+[module/Volume]
+type = internal/volume
+mapping = true
+format-volume = <ramp-volume>
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+format-volume-padding = 1
+label-muted = 
+format-muted-foreground = #4df1f1f1
+format-muted-padding = 1
+
+[module/pavolume]
+type = custom/script
+interval = 2
+label = %output%
+exec = ~/.config/polybar/pavolume.sh
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/pavolume.sh --togmute
+scroll-up = ~/.config/polybar/pavolume.sh --up
+scroll-down = ~/.config/polybar/pavolume.sh --down
+
+[module/volrocker]
+type = custom/script
+interval = 0.2
+exec = ~/scripts/volume
+;type = custom/text
+;content = %{F#f1f1f1}━━━━━━━━━━━━%{F-}%{F#67727E}━━%{F-}
+
+[module/Search]
+type = custom/script
+exec = echo " "
+click-left = ~/.config/polybar/scripts/search.sh
+format-padding = 1
+
+[module/Clock]
+type = internal/date
+date = %a, %d %b %H:%M
+interval = 5
+format-padding = 2
+
+[module/Shutdown]
+type = custom/script
+exec = echo ""
+click-left = ~/scripts/power
+format-padding = 1

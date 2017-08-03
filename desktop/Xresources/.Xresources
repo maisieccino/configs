@@ -1,0 +1,66 @@
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+
+URxvt.scrollBar: false
+URxvt*transparent: false
+URxvt*shading: 20
+!URxvt*blurRadius: 20
+URxvt*fading: 20
+URxvt*internalBorder: 0
+URxvt*saveLines: 1000
+URxvt*buffered:	false
+
+URxvt.keysym.M-C-c:	perl:clipboard:copy
+URxvt.keysym.M-C-v:	perl:clipboard:paste
+
+*font: -*-gohufont-medium-*,-wuncon-siji-medium-r-normal--11-100-*-*-*-*-iso10646-*
+*boldFont: -*-gohufont-bold-*,-wuncon-siji-medium-r-normal--11-100-*-*-*-*-iso10646-*
+URxvt*letterSpace:  0
+
+*foreground:   #d3d0c8
+*background:   #313743
+*cursorColor:  #d3d0c8
+*color0:       #363a45
+*color8:       #747369
+*color1:       #f2777a
+*color9:       #f2777a
+*color2:       #99cc99
+*color10:      #99cc99
+*color3:       #ffcc66
+*color11:      #ffcc66
+*color4:       #6699cc
+*color12:      #6699cc
+*color5:       #cc99cc
+*color13:      #cc99cc
+*color6:       #66cccc
+*color14:      #66cccc
+*color7:       #d3d0c8
+*color15:      #f2f0ec
+
+rofi.line-padding: 0
+rofi.padding:	0
+rofi.fullscreen: true
+rofi.fixed-num-lines: false
+rofi.bw:		400
+rofi.location:	0
+rofi.yoffset:	0
+rofi.terminal:	termite
+rofi.lines:		20
+rofi.eh:		1
+rofi.font:		Circular Std Book 15
+rofi.color-window: argb:cc313743, argb:cc313743, #d3d0c8
+rofi.color-normal: argb:00313743, #d3d0c8, argb:00000000, #cc99cc, #313743
+rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
+rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
+rofi.sidebar-mode: true
+rofi.matching: regex
+rofi.modi: window,drun,run,calc:qalc +u8 -nocurrencies
+
+xterm*locale: true
+xterm*faceName: Monaco for Powerline:size=9:antialias=true

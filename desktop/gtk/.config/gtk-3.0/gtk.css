@@ -1,0 +1,8 @@
+.-vala-panel-appmenu-private {
+     color: "#2c3643";
+     background-color: "#dbe6ec";
+}
+
+VteTerminal, vte-terminal {
+    padding: 10px;
+}

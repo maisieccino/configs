@@ -1,0 +1,81 @@
+# <- this tricks vim into using syntax highlighting
+[global]
+    font = "FontAwesome 10, Circular Std Book 10"
+    markup = yes
+    format = "<b>%s</b>\n%b\n%p"
+    sort = yes
+    indicate_hidden = yes
+    alignment = center
+    bounce_freq = 0
+    show_age_threshold = 60
+    word_wrap = yes
+    ignore_newline = no
+    geometry = "250x5-16+16"
+    transparency = 15
+    shrink = false
+    idle_threshold = 90
+    monitor = 0
+    follow = mouse
+    sticky_history = yes
+    line_height = 0
+    separator_height = 0
+    padding = 2
+    horizontal_padding = 4
+    separator_color = frame
+    startup_notification = false
+    dmenu = /usr/bin/rofi -dmenu -p dunst
+    browser = /usr/bin/chromium -new-tab
+    icon_position = left
+    max_icon_size = 62
+    icon_folders = /usr/share/icons/gnome/48x48/status/:/usr/share/icons/gnome/48x48/devices/:/usr/share/icons/gnome/48x48/categories/
+[shortcuts]
+    close = ctrl+space
+    close_all = mod4+ctrl+o
+    history = mod4+shift+o
+    context = mod4+o
+[urgency_low]
+    background = "#313743"
+    foreground = "#d3d0c8"
+    timeout = 10
+[urgency_normal]
+    background = "#d3d0c8"
+    foreground = "#313743"
+    timeout = 10
+[urgency_critical]
+    background = "#ffcc66"
+    foreground = "#313743"
+    timeout = 0
+
+[scrot]
+    appname = scrot
+    format = "<b>🖥 %s</b>\n%b"
+[mopidy]
+    summary = Mopidy
+    appname = notify-send
+    urgency = low
+    format = "<b>  %s</b>\n%b"
+[google-play-music-desktop-player]
+    appname = Electron
+    urgency = low
+    format = "<b>  %s</b>\n%b"
+    new_icon = "/home/mbell/.local/share/icons/Notifications/gpm.png"
+[usb]
+    summary = Automount
+    format = "<b> %s</b>\n%b"
+[slack]
+    summary = Slack Notification
+    format = "<b> %s</b>\n%b"
+[weechat]
+    appname = weechat
+    format = "<b>  %s</b>\n%b"
+[Pushbullet]
+    summary = "*Motorola MotoG3*"
+    format = "<b> %s</b>\n%b"
+    urgency = low
+[Telegram Desktop]
+    appname = "telegram desktop"
+    format = "<b>😲 %s</b>\n%b"
+[spotify]
+    appname = "Spotify"
+    urgency = normal
+    format = "<b>🕺 %s</b>\n%b"

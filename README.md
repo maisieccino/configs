@@ -15,6 +15,9 @@ To apply a theme, run `./apply.sh $theme`, where `$theme` is the choice of theme
 ## Space
 ![](space/preview.png)
 
+## Desktop
+![](desktop/preview.png)
+
 # Vim keyboard shortcuts
 
 | description         | key           |
