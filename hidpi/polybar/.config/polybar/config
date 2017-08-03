@@ -20,10 +20,10 @@ width = 100%
 height = 24
 modules-left = i3 music
 modules-center = Xwindow
-modules-right = volrocker Clock Shutdown
+modules-right = Battery volrocker Clock Shutdown
 module-margin-right = 1
-background = #77261f39
-foreground = #f1f1f1
+background = #a71e242f
+foreground = #b8c4ca
 line-size = 2
 tray-position = right
 tray-padding = 2
@@ -31,9 +31,9 @@ tray-transparent = true
 tray-maxsize = 10
 tray-offset-y = -2
 border-size = 0
-font-0 = SpaceMono Nerd Font:size=10;0
-font-1 = FontAwesome:size=10;0
-font-2 = DejaVu Sans Mono:size=10;0
+font-0 = Montserrat:size=10;0
+font-1 = SpaceMono Nerd Font:size=10;0
+font-2 = FontAwesome:size=10;0
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
@@ -47,8 +47,8 @@ modules-left = i3 music
 modules-center = Xwindow
 modules-right = volrocker Clock Shutdown
 module-margin-right = 1
-background = #77261f39
-foreground = #f1f1f1
+background = #a71e242f
+foreground = #b8c4ca
 ; tray-position = right
 ; tray-padding = 2
 border-size = 0
@@ -62,14 +62,15 @@ scroll-down = i3wm-wsprev
 type = internal/i3
 ; label-focused = 
 label-focused-padding = 2
-label-focused-background = #d90e79
+label-focused-background = #1fc17a
+label-focused-foreground = #1e242f
 ; label-unfocused = 
 label-unfocused-padding = 2
 label-unfocused-foreground = #9df1f1f1
 ; label-urgent = 
 label-urgent-padding = 2
 label-urgent-background= #98de00
-label-urgent-foreground = #505354
+label-urgent-foreground = #8798a4
 ; label-visible = 
 label-visible-padding = 2
 label-visible-foreground = #f1f1f1
@@ -82,21 +83,9 @@ ws-icon-4 = 5;
 ws-icon-5 = 6;
 
 [module/Battery]
-type = internal/battery
-battery = BAT0
-adapter = ADP1
-poll-interval = 5
-time-format = (%H:%M)
-format-discharging = <ramp-capacity> <label-discharging>
-format-charging = <ramp-capacity> <label-charging>
-label-charging = %time%
-label-discharging = %time%
-label-full = 
-ramp-capacity-0 = !
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+type = custom/script
+exec = ~/scripts/battery
+click-left = /home/$USER/scripts/popup/bat.sh
 
 [module/Spotify]
 type = custom/script
@@ -140,7 +129,7 @@ format-padding = 1
 
 [module/Wifi]
 type = internal/network
-interface = wlp1s0
+interface = wlp58s0
 interval = 3
 format-connected = <ramp-signal> <label-connected>
 ramp-signal-0 = 
@@ -188,8 +177,6 @@ scroll-down = ~/.config/polybar/pavolume.sh --down
 type = custom/script
 interval = 0.2
 exec = ~/scripts/volume
-;type = custom/text
-;content = %{F#f1f1f1}━━━━━━━━━━━━%{F-}%{F#67727E}━━%{F-}
 
 [module/Search]
 type = custom/script

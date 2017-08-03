@@ -19,47 +19,46 @@ URxvt*buffered:	false
 URxvt.keysym.M-C-c:	perl:clipboard:copy
 URxvt.keysym.M-C-v:	perl:clipboard:paste
 
-URxvt.font: -*-tamzenforpowerline-medium-*-*-*-12-*-*-*-*-*-*-*,\
-			-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+URxvt.font: -*-gohufont-medium-*-*-*-11-*-*-*-*-*-iso10646-*,-wuncon-siji-medium-r-normal--11-100-*-*-*-*-iso10646-*
 
 URxvt*letterSpace:  0
 
 ! special
-*foreground:   #f1f1f1
-*background:   #261f39
-*cursorColor:  #f1f1f1
+*foreground:   #b8c4ca
+*background:   #1e242f
+*cursorColor:  #b8c4ca
 
 ! black
-*color0:       #1b1d1e
-*color8:       #505354
+*color0:       #0a0a0a
+*color8:       #3c3c3c
 
 ! red
-*color1:       #d90e79
-*color9:       #fe207b
+*color1:       #f64549
+*color9:       #f94445
 
 ! green
-*color2:       #98de00
-*color10:      #b6e354
+*color2:       #1fc17a
+*color10:      #13c379
 
 ! yellow
-*color3:       #fd5d77
-*color11:      #fea182
+*color3:       #feef5a
+*color11:      #fef050
 
 ! blue
-*color4:       #03cbca
-*color12:      #2dfcde
+*color4:       #79b0de
+*color12:      #77afe1
 
 ! magenta
-*color5:       #473b6b
-*color13:      #6e719c
+*color5:       #b1387b
+*color13:      #b1387b
 
 ! cyan
-*color6:       #fecf87
-*color14:      #fef184
+*color6:       #0edbaf
+*color14:      #0edbaf
 
 ! white
-*color7:       #ccccc6
-*color15:      #f8f8f2
+*color7:       #8798a4
+*color15:      #ffffff
 
 ! rofi.terminal:	urxvt
 ! rofi.lines:		5
@@ -76,11 +75,11 @@ rofi.yoffset:	24
 rofi.terminal:	termite
 rofi.lines:		10
 rofi.eh:		1
-rofi.font:		SpaceMono Nerd Font 10
-rofi.color-window: argb:cc261f39, argb:ff03cbca, #ccccc6
-rofi.color-normal: argb:00261f39, #f1f1f1, argb:00261f39, #d90e79, #eceff1
+rofi.font:		Montserrat 10
+rofi.color-window: argb:cc1e242f, argb:ff1fc17a, #79b0de
+rofi.color-normal: argb:001e242f, #b8c4ca, argb:001e242f, #b1387b, #ffffff
 rofi.color-active: #fdf6e3, #268bd2, #eee8d5, #268bd2, #fdf6e3
-rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
+rofi.color-urgent: #fdf6e3, #f64549, #eee8d5, #f64549, #fdf6e3
 rofi.sidebar-mode: true
 rofi.matching: regex
 rofi.modi: window,drun,run,calc:qalc +u8 -nocurrencies

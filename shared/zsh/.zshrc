@@ -242,8 +242,6 @@ gitignore() {
   fi
 }
 
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
-export VIRTUALENVWRAPPER_VIRTUALENV=/usr/bin/virtualenv2
 export WORKON_HOME=~/.virtualenvs
 source /usr/bin/virtualenvwrapper_lazy.sh
 
@@ -255,3 +253,6 @@ alias nodejs=node
 yarn() {
   /usr/bin/yarn $@ --emoji
 }
+
+# added by travis gem
+[ -f /home/mbell/.travis/travis.sh ] && source /home/mbell/.travis/travis.sh

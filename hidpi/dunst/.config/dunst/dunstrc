@@ -1,7 +1,7 @@
 # <- this tricks vim into using syntax highlighting
 [global]
     # font = Tewi 8
-    font = "FontAwesome, SpaceMono Nerd Font 10"
+    font = "FontAwesome, Montserrat 10"
 
     # allow a small subset of html markup:
     # <b>bold</b>
@@ -21,7 +21,7 @@
     #   %I  iconname (without its path)
     #   %p  progress value if set ([  0%] to [100%]) or nothing
     # Markup is allowed
-    format = "<b>  %s</b>\n%b"
+    format = "<b>%s</b>\n%b\n%p"
 
     # Sort messages by urgency
     sort = yes
@@ -61,11 +61,12 @@
     # right side of the screen.  Y is measured from the top and down respectevly.
     # The width can be negative. In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "275x5+40-40"
+    geometry = "300x5-20+40"
+    shrink = yes
 
     # The transparency of the window. range: [0; 100]
     # This option will only work if a compositing windowmanager is present (e.g. xcompmgr, compiz, etc..)
-    transparency = 10
+    transparency = 15
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -130,9 +131,7 @@
 
     icon_folders = /usr/share/icons/gnome/48x48/status/:/usr/share/icons/gnome/48x48/devices/:/usr/share/icons/gnome/48x48/categories/
 
-[frame]
-    width = 2
-    color = "#03cbca"
+    frame_width = 0
 
 [shortcuts]
     # shortcuts are specified as [modifier+][modifier+]...key
@@ -144,30 +143,30 @@
     close = ctrl+space
 
     # close all notifications
-    close_all = ctrl+shift+space
+    close_all = mod4+ctrl+o
 
     # redisplay last message(s)
     # On the US keyboard layout 'grave' is normally above TAB and left of '1'.
-    history = ctrl+grave
+    history = mod4+shift+o
 
     # context menu
-    context = ctrl+shift+period
+    context = mod4+o
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the '#' and following  would be interpreted as a comment.
-    background = "#473b6b"
-    foreground = "#ccccc6"
+    background = "#b8c4ca"
+    foreground = "#5767a4"
     timeout = 10
 
 [urgency_normal]
-    background = "#d90e79"
-    foreground = "#f1f1f1"
+    background = "#b8c4ca"
+    foreground = "#3c3c3c"
     timeout = 10
 
 [urgency_critical]
-    background = "#98de00"
-    foreground = "#505354"
+    background = "#f64549"
+    foreground = "#b8c4ca"
     timeout = 0
 
 
