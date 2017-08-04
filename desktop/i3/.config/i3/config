@@ -67,7 +67,7 @@ for_window [class="^Skype$"] floating enable
 for_window [class="^Evince$"] floating enable
 
 #Compton
-exec --no-startup-id compton -o 0.3 --backend glx -m 0.8 --vsync opengl -b -i 1.0 --config ~/.config/compton.conf
+exec --no-startup-id compton -o 0.3 -b -i 1.0 --config ~/.config/compton.conf
 
 # borders
 #for_window [class="^.*"] border pixel 0
@@ -77,8 +77,14 @@ for_window [class="Dunst"] border pixel 0
 #new_float pixel 3
 
 # start a terminal
-# bindsym $mod+Return exec urxvt 
-bindsym $mod+Return exec termite
+# bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec termite --geometry=600x370
+
+# scratchpad
+for_window [instance="__scratchpad"] move scratchpad 
+for_window [instance="__scratchpad"] floating enable
+exec --no-startup-id termite --name=__scratchpad --geometry=600x370 -e zsh -c $HOME/scripts/scratchpad.sh
+bindsym $mod+F2 scratchpad show
 
 # kill focused window
 bindsym $mod+Shift+q kill
