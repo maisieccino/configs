@@ -73,7 +73,7 @@
     format = "<b> %s</b>\n%b"
     urgency = low
 [Telegram Desktop]
-    appname = "telegram desktop"
+    appname = "Telegram Desktop"
     format = "<b>😲 %s</b>\n%b"
 [spotify]
     appname = "Spotify"
