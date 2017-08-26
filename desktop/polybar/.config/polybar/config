@@ -126,7 +126,7 @@ format-padding = 1
 
 [module/Wifi]
 type = internal/network
-interface = wlp1s0
+interface = wlp58s0
 interval = 3
 format-connected = <ramp-signal> <label-connected>
 ramp-signal-0 = 
@@ -136,8 +136,8 @@ ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-5 = 
 format-connected-padding = 2
-label-connected = %essid%
-label-disconnected = 
+label-connected = "%essid% %signal%%"
+label-disconnected =  Disconnected
 format-disconnected-foreground = #4df1f1f1
 format-disconnected-padding = 2
 

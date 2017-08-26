@@ -67,12 +67,13 @@ for_window [class="^Skype$"] floating enable
 for_window [class="^Evince$"] floating enable
 
 #Compton
-exec --no-startup-id compton -o 0.3 -b -i 1.0 --config ~/.config/compton.conf
+exec --no-startup-id compton -b --config ~/.config/compton.conf
 
 # borders
 #for_window [class="^.*"] border pixel 0
 for_window [class="^.*"] border pixel 2
 for_window [class="Dunst"] border pixel 0
+for_window [class="albert"] border pixel 0
 #new_window pixel 3
 #new_float pixel 3
 
@@ -93,6 +94,8 @@ bindsym $mod+y fullscreen disable; floating enable; resize set 480 270; sticky e
 
 # Menu
 bindsym $mod+d exec rofi -show drun
+# launcher
+exec_always albert
 
 # change focus
 bindsym $mod+j focus left
@@ -226,9 +229,12 @@ exec --no-startup-id devmon --sync --exec-on-drive "notify-send 'Automount' '%l 
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight + 10
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight - 10
 
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ false && pactl set-sink-volume @DEFAULT_SINK@ -2%
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ false && pactl set-sink-volume @DEFAULT_SINK@ +2%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ false && pactl set-sink-volume @DEFAULT_SINK@ -2%
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ false && pactl set-sink-volume @DEFAULT_SINK@ +2%
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/scripts/popup/volume.sh down
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/popup/volume.sh up
+bindsym XF86AudioMute exec --no-startup-id ~/scripts/popup/volume.sh mute
 bindsym $mod+p exec --no-startup-id playerctl play-pause
 bindsym $mod+Shift+comma exec --no-startup-id playerctl previous
 bindsym $mod+Shift+period exec --no-startup-id playerctl next
