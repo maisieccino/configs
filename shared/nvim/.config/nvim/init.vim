@@ -126,6 +126,9 @@ set noshowmode
 
 " Omnicompletion
 set omnifunc=syntaxcomplete#Complete
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+
 
 "set cursorline
 function! s:set_cursor_line()
@@ -139,7 +142,6 @@ endfunction
 
 call s:set_cursor_line()
 
-filetype plugin indent on
 set grepprg=grep\ -nH\ $*
 
 call plug#begin('~/.local/share/nvim/plugged')
@@ -150,6 +152,7 @@ Plug 'tpope/vim-pathogen'
 Plug 'tpope/vim-fugitive'
 nnoremap <leader>gw :Gwrite<Cr>
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-endwise'
 
 " Autosave vim files.
 Plug '907th/vim-auto-save'
@@ -169,9 +172,45 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 
+
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+let g:deoplete#omni#functions = {}
+let g:deoplete#sources = {}
+" Enable heavy omni completion.
+if !exists('g:deoplete#sources#omni#input_patterns')
+  let g:deoplete#sources#omni#input_patterns = {}
+endif
+
+let g:deoplete#sources#omni#input_patterns.python =
+      \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+let g:deoplete#sources#omni#input_patterns.javascript =
+      \ '\h\w*\|[^. \t]\.\w*'
+let g:acp_enableAtStartup = 0
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+" Use smartcase.
+let g:deoplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:deoplete#sources#syntax#min_keyword_length = 3
+" Define dictionary.
+let g:deoplete#sources#dictionary#dictionaries = {
+      \ 'default' : '',
+      \ 'vimshell' : $HOME.'/.vimshell_hist',
+      \ 'scheme' : $HOME.'/.gosh_completions'
+      \ }
+
+
+Plug 'ervandew/supertab'
+autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:SuperTabClosePreviewOnPopupClose = 1
+
+" snippets
+Plug 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<C-j>"
+
+Plug 'honza/vim-snippets'
+
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 " airline
 Plug 'vim-airline/vim-airline'
@@ -184,6 +223,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'editorconfig/editorconfig-vim'
 
@@ -199,11 +239,32 @@ Plug 'mustache/vim-mustache-handlebars'
 " JS
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-let g:jsx_ext_required = 0
 
-Plug 'wokalski/autocomplete-flow'
-let g:autocomplete_flow#insert_paren_after_function = 0
-set completeopt-=preview
+Plug 'ternjs/tern_for_vim', { 'do': 'yarn install', 'for': ['javascript', 'javascript.jsx'] }
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+let g:deoplete#omni#functions.javascript = [
+  \ 'tern#Complete',
+  \ 'jspc#omni'
+  \]
+
+let g:jsx_ext_required = 1
+let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
+
+function! StrTrim(txt)
+  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+endfunction
+let g:tern_path = StrTrim(system('PATH=$(npm bin):$PATH && which tern'))
+
+if g:tern_path != 'tern not found'
+  let g:deoplete#sources#ternjs#tern_bin = g:tern_path
+endif
+
+
+
+set completeopt=longest,menuone,preview
 
 " JSON
 au FileType json let g:indentLine_conceallevel = 0
@@ -222,6 +283,16 @@ let g:tex_conceal = ""
 Plug 'davidhalter/jedi-vim', {'do': 'git submodule update --init'}
 au FileType python set shiftwidth=4
 au FileType python set softtabstop=4
+
+" Ruby
+Plug 'vim-ruby/vim-ruby'
+let g:rubycomplete_rails = 1
+let g:rubycomplete_load_gemfile = 1
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_classes_in_global = 1
+au FileType ruby set omnifunc=rubycomplete#Complete
+Plug 'skalnik/vim-vroom'
 
 " Coffee
 Plug 'kchmck/vim-coffee-script'
@@ -267,6 +338,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_exe='PATH=$(npm bin):$PATH eslint'
 let g:syntastic_javascript_eslint_exec = '/bin/ls'
+let g:syntastic_ruby_checkers = ['rubocop']
 
 let g:limelight_conceal_ctermfg = 'Gray'
 let g:limelight_conceal_guifg = '#D47F35'
@@ -298,29 +370,12 @@ let &t_EI = "\<Esc>[2 q"
 autocmd! ColorScheme * call s:set_cursor_line()
 
 " deoplete
-let g:acp_enableAtStartup = 0
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-" Use smartcase.
-let g:deoplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:deoplete#sources#syntax#min_keyword_length = 3
-" Define dictionary.
-let g:deoplete#sources#dictionary#dictionaries = {
-      \ 'default' : '',
-      \ 'vimshell' : $HOME.'/.vimshell_hist',
-      \ 'scheme' : $HOME.'/.gosh_completions'
-      \ }
 
 " Define keyword.
 if !exists('g:deoplete#keyword_patterns')
   let g:deoplete#keyword_patterns = {}
 endif
 let g:deoplete#keyword_patterns['default'] = '\h\w*'
-
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     deoplete#undo_completion()
@@ -362,15 +417,6 @@ let g:jedi#auto_vim_configuration = 0
 autocmd FileType typescript set omnifunc=tsuquyomi#complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" Enable heavy omni completion.
-if !exists('g:deoplete#sources#omni#input_patterns')
-  let g:deoplete#sources#omni#input_patterns = {}
-endif
-
-let g:deoplete#sources#omni#input_patterns.python =
-      \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-let g:deoplete#sources#omni#input_patterns.javascript =
-      \ '\h\w*\|[^. \t]\.\w*'
 
 " (Xe)?(La)?TeX word count
 :map <F3> :w !detex \| wc -w<CR>

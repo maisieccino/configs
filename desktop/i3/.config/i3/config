@@ -1,4 +1,4 @@
-set Locker i3lock && sleep 1
+set $Locker i3lock && sleep 1
 
 exec --no-startup-id setxkbmap gb extd
 

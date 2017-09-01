@@ -122,6 +122,7 @@ plugins=(archlinux, bower, emoji, git)
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/scripts:~/go/bin
 PATH=$(ruby -e 'print Gem.user_dir')/bin:$PATH
+PATH=$PATH:$HOME/node_modules/.bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -256,3 +257,16 @@ yarn() {
 
 # added by travis gem
 [ -f /home/mbell/.travis/travis.sh ] && source /home/mbell/.travis/travis.sh
+
+## random aliases
+
+# cURL json
+jc() {
+  url=$1
+  shift
+  curl $url -H "Accepts: application/json" -H "Content-Type: application/json" -D /tmp/headers.out $@ 2>/dev/null | jq
+  cat /tmp/headers.out
+  rm /tmp/headers.out
+}
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
