@@ -252,7 +252,9 @@ alias nodejs=node
 
 # we want yarn moji damnit
 yarn() {
-  /usr/bin/yarn $@ --emoji
+  command=$1
+  shift
+  /usr/bin/yarn $command --emoji $@
 }
 
 # added by travis gem

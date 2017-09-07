@@ -152,7 +152,11 @@ Plug 'tpope/vim-pathogen'
 Plug 'tpope/vim-fugitive'
 nnoremap <leader>gw :Gwrite<Cr>
 Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-endwise'
+Plug 'Raimondi/delimitMate'
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1
+let g:delimitMate_jump_expansion = 1
+let g:delimitMate_balance_matchpairs = 1
 
 " Autosave vim files.
 Plug '907th/vim-auto-save'
@@ -202,7 +206,6 @@ let g:deoplete#sources#dictionary#dictionaries = {
 
 Plug 'ervandew/supertab'
 autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:SuperTabClosePreviewOnPopupClose = 1
 
 " snippets
@@ -219,11 +222,12 @@ Plug 'vim-airline/vim-airline-themes'
 " misc utils
 Plug 'Rykka/colorv.vim'
 Plug 'Yggdroot/indentLine'
-Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_max_files = 0
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|vendor'
 
 Plug 'editorconfig/editorconfig-vim'
 
@@ -249,7 +253,7 @@ let g:deoplete#omni#functions.javascript = [
   \]
 
 let g:jsx_ext_required = 1
-let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+" let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
 let g:tern#command = ['tern']
 let g:tern#arguments = ['--persistent']
 
@@ -262,7 +266,16 @@ if g:tern_path != 'tern not found'
   let g:deoplete#sources#ternjs#tern_bin = g:tern_path
 endif
 
-
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
+let g:prettier#exec_cmd_async = 1
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql PrettierAsync
+let g:prettier#config#single_quote = 'false'
+let g:prettier#config#jsx_bracket_same_line = 'false'
+let g:prettier#config#trailing_comma = 'all'
+let g:prettier#config#parser = 'babylon'
 
 set completeopt=longest,menuone,preview
 
@@ -326,10 +339,6 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:delimitMate_expand_cr = 1
-let g:delimitMate_expand_space = 1
-let g:delimitMate_jump_expansion = 1
-let g:delimitMate_balance_matchpairs = 1
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -381,14 +390,8 @@ let g:deoplete#keyword_patterns['default'] = '\h\w*'
 inoremap <expr><C-g>     deoplete#undo_completion()
 inoremap <expr><C-l>     deoplete#manual_complete()
 
-" Recommended key-mappings.
 " <CR>: close popup and save indent.
-"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
+imap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<Plug>delimitMateCR"
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
@@ -409,7 +412,7 @@ inoremap <expr> <BS>  pumvisible() ? deoplete#smart_close_popup()."\<BS>" : deli
 
 " Enable omni completion.
 let g:deoplete#complete_method = "omnifunc"
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType python setlocal omnifunc=jedi#completions
 let g:jedi#completions_enabled = 0
