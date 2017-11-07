@@ -116,12 +116,11 @@ ZSH_THEME="zeit"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(archlinux, bower, emoji, git)
+plugins=(archlinux, docker, emoji, git, npm)
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/scripts:~/go/bin
-PATH=$(ruby -e 'print Gem.user_dir')/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$HOME/scripts:~/go/bin:~/.yarn/bin
 PATH=$PATH:$HOME/node_modules/.bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -231,8 +230,6 @@ fi
 # do we really need this anymore
 # export AURDEST=/build/$USER
 
-# added by travis gem
-[ -f /home/$USER/.travis/travis.sh ] && source /home/$USER/.travis/travis.sh
 alias nowplaying='echo "$(playerctl metadata artist 2>/dev/null) - $(playerctl metadata title 2>/dev/null)" '
 alias musicfile='while sleep 5; do echo "Now playing: $(nowplaying)" > /tmp/music ; done'
 alias django="python manage.py"
@@ -251,14 +248,11 @@ alias nodejs=node
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # we want yarn moji damnit
-yarn() {
-  command=$1
-  shift
-  /usr/bin/yarn $command --emoji $@
-}
-
-# added by travis gem
-[ -f /home/mbell/.travis/travis.sh ] && source /home/mbell/.travis/travis.sh
+# yarn() {
+#   command=$1
+#   shift
+#   /usr/bin/yarn $command --emoji $@
+# }
 
 ## random aliases
 
@@ -271,4 +265,10 @@ jc() {
   rm /tmp/headers.out
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# alias sup to use ruby 2.3.3. or else!1!!!
+alias sup='rvm 2.3.3 do .rvm/gems/ruby-2.3.3/bin/sup'
